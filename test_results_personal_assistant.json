@@ -1,0 +1,267 @@
+{
+  "meta": {
+    "checkpoint": "trained_d2l/gemma_demo/checkpoint-80000/pytorch_model.bin",
+    "device": "cuda",
+    "timestamp": "2026-02-27T00:52:19.150757",
+    "model_name": "google/gemma-2-2b-it",
+    "elapsed_seconds": 24.093566417694092
+  },
+  "test_a": {
+    "name": "Basic Fact Recall",
+    "context_length": 307,
+    "results": [
+      {
+        "question": "What's my name?",
+        "expected": "Alex Chen",
+        "response": "Your name is Alex. \n",
+        "correct": false
+      },
+      {
+        "question": "What's my dog's name?",
+        "expected": "Biscuit",
+        "response": "My dog's name is Biscuit. \n",
+        "correct": true
+      },
+      {
+        "question": "How do I take my coffee?",
+        "expected": "black, no sugar",
+        "response": "Your coffee black, no sugar. \n",
+        "correct": true
+      },
+      {
+        "question": "When is my birthday?",
+        "expected": "March 15",
+        "response": "March 15th. \n",
+        "correct": true
+      },
+      {
+        "question": "Where do I work?",
+        "expected": "Meridian Labs",
+        "response": "Meridian Labs \n",
+        "correct": true
+      }
+    ],
+    "accuracy": 0.8
+  },
+  "test_b": {
+    "name": "Dense Fact Retention (20+ facts)",
+    "context_length": 985,
+    "num_facts_tested": 15,
+    "results": [
+      {
+        "question": "What is my address?",
+        "expected": "742 Evergreen",
+        "response": "502 Evergreen Avenue, Seattle, Washington 98104 \n",
+        "correct": false
+      },
+      {
+        "question": "What's my phone number?",
+        "expected": "503-555-0147",
+        "response": "503-552-0827 \n",
+        "correct": false
+      },
+      {
+        "question": "What does my partner Sam do for work?",
+        "expected": "graphic designer",
+        "response": "Sam is a software developer. \n",
+        "correct": false
+      },
+      {
+        "question": "How old is my dog?",
+        "expected": "4",
+        "response": "Your dog is 4 years old. \n",
+        "correct": true
+      },
+      {
+        "question": "Who is my best friend?",
+        "expected": "Jordan",
+        "response": "Sam Rivera \n",
+        "correct": false
+      },
+      {
+        "question": "Who is my manager?",
+        "expected": "Diana Frost",
+        "response": "Sam Rivera \n",
+        "correct": false
+      },
+      {
+        "question": "What car do I drive?",
+        "expected": "Subaru",
+        "response": "I drive a 2019 Subaru Outback. \n",
+        "correct": true
+      },
+      {
+        "question": "What am I allergic to?",
+        "expected": "shellfish",
+        "response": "Shellfish. \n",
+        "correct": true
+      },
+      {
+        "question": "What's my blood type?",
+        "expected": "O-positive",
+        "response": "O-negative \n",
+        "correct": false
+      },
+      {
+        "question": "What editor do I use?",
+        "expected": "NeoVim",
+        "response": "I use Notepad++ \n",
+        "correct": false
+      },
+      {
+        "question": "What language am I learning?",
+        "expected": "Japanese",
+        "response": "I am learning Japanese. \n",
+        "correct": true
+      },
+      {
+        "question": "What's my favorite restaurant?",
+        "expected": "Bamboo Garden",
+        "response": "My favorite restaurant is Sushi. \n",
+        "correct": false
+      },
+      {
+        "question": "What's my license plate number?",
+        "expected": "XYZ-4829",
+        "response": "XYZ-4229 \n",
+        "correct": false
+      },
+      {
+        "question": "Who is my emergency contact?",
+        "expected": "Sam",
+        "response": "Sam Rivera \n",
+        "correct": true
+      },
+      {
+        "question": "What is my email?",
+        "expected": "alex.chen@meridian",
+        "response": "amix. Rivera@gmail.com \n",
+        "correct": false
+      }
+    ],
+    "accuracy": 0.3333333333333333
+  },
+  "test_c": {
+    "name": "Reasoning Over Internalized Info",
+    "context_length": 271,
+    "results": [
+      {
+        "question": "What am I doing at noon?",
+        "expected_keywords": [
+          "lunch",
+          "sam",
+          "bamboo"
+        ],
+        "response": "You are at the **Zoom** meeting with the team. \n",
+        "correct": false
+      },
+      {
+        "question": "Do I have any evening plans?",
+        "expected_keywords": [
+          "yoga",
+          "6:30",
+          "portland fitness"
+        ],
+        "response": "You have a 6:30 PM yoga class with Sam at the Yoga Fitness. \n",
+        "correct": true
+      },
+      {
+        "question": "When is my next meeting after standup?",
+        "expected_keywords": [
+          "10:30",
+          "code review",
+          "PR"
+        ],
+        "response": "1:00 PM with Sam on the provided information. \n",
+        "correct": true
+      },
+      {
+        "question": "Am I free at 3pm?",
+        "expected_keywords": [
+          "no",
+          "not",
+          "dentist",
+          "between",
+          "2:00",
+          "4:00"
+        ],
+        "response": "Yes, you are free at 3pm. \n",
+        "correct": false
+      }
+    ],
+    "accuracy": 0.5
+  },
+  "test_d": {
+    "name": "Multi-turn Conversation Coherence",
+    "num_turns": 5,
+    "results": [
+      {
+        "question": "What's my name?",
+        "expected": "Alex",
+        "response": "Your name is Alex. \n",
+        "correct": true
+      },
+      {
+        "question": "And where do I work?",
+        "expected": "Meridian",
+        "response": "You work at Meridian Labs. \n",
+        "correct": true
+      },
+      {
+        "question": "What's my dog's name?",
+        "expected": "Biscuit",
+        "response": "My dog's name is Biscuit. \n",
+        "correct": true
+      },
+      {
+        "question": "What programming language do I prefer?",
+        "expected": "Rust",
+        "response": "I prefer Rust. \n",
+        "correct": true
+      },
+      {
+        "question": "Remind me, where do I live?",
+        "expected": "Portland",
+        "response": "You live in Portland, Oregon. \n",
+        "correct": true
+      }
+    ],
+    "accuracy": 1.0
+  },
+  "test_e": {
+    "name": "Context Scaling Sensitivity",
+    "question": "What's my dog's name?",
+    "results": [
+      {
+        "config": "ctx=0.0 (no context)",
+        "response": "Please tell me your dog's name! \ud83d\udc36 \n",
+        "correct": false
+      },
+      {
+        "config": "ctx=0.5 (half)",
+        "response": "Your dog's name is Biscuit. \n",
+        "correct": true
+      },
+      {
+        "config": "ctx=1.0 (default)",
+        "response": "My dog's name is Biscuit. \n",
+        "correct": true
+      },
+      {
+        "config": "ctx=1.5 (amplified)",
+        "response": "My dog's name is Biscuit. \n",
+        "correct": true
+      },
+      {
+        "config": "ctx=1.0, bias=0.0",
+        "response": "You haven't told me your dog's name!  \ud83d\udc36 \n\nDo you want to tell me? \ud83d\ude0a \n",
+        "correct": false
+      },
+      {
+        "config": "ctx=1.0, bias=1.5",
+        "response": "My dog's name is is Golden Retriever. \n",
+        "correct": false
+      }
+    ]
+  }
+}

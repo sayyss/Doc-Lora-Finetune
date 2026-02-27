@@ -20,6 +20,12 @@ CTX_AFFIXES = {
         # `<|im_end|>\n<|im_start|>assistant\n`
         "suffix": [151645, 198, 151644, 77091, 198],
     },
+    "openai/gpt-oss-20b": {
+        # `<|start|>user<|message|>`
+        "prefix": [200006, 1428, 200008],
+        # `<|end|><|start|>assistant`
+        "suffix": [200007, 200006, 173781],
+    },
 }
 
 

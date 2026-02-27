@@ -6,6 +6,7 @@ from peft import PeftModel
 from peft import get_peft_config as _get_peft_config
 from peft.utils import PeftType
 from transformers import (
+    AutoConfig,
     AutoModel,
     AutoModelForCausalLM,
     AutoTokenizer,
@@ -111,6 +112,18 @@ def get_model(
         attn_implementation="eager",
         use_cache=None,
     )
+
+    # MXFP4 models (e.g. GPT-OSS 20B): dequantize to bf16 for training.
+    _model_config = AutoConfig.from_pretrained(
+        model_name_or_path, trust_remote_code=True
+    )
+    _quant_cfg = getattr(_model_config, "quantization_config", None)
+    if _quant_cfg and _quant_cfg.get("quant_method") == "mxfp4":
+        from transformers import Mxfp4Config
+        logger.info("Model has MXFP4 quantization. Dequantizing to bf16.")
+        model_init_kwargs["quantization_config"] = Mxfp4Config(dequantize=True)
+        model_init_kwargs["torch_dtype"] = torch.bfloat16
+
     is_vision_model = check_is_vision_model(model_name_or_path)
     if model_kwargs is not None:
         model_init_kwargs.update(model_kwargs)

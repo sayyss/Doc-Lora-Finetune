@@ -1,0 +1,38 @@
+# GPT-OSS 20B single-step sanity test config
+# Target attention modules only (MoE expert weights are batched nn.Parameter, not nn.Linear)
+
+# LoRA — target q_proj (attention, not MLP)
+lora_r: 8
+lora_dropout: 0.0
+target_modules:
+  - q_proj
+
+# Context encoder — use same model (defaults to base model when unset)
+ctx_encoder_type: per_layer_activations
+
+# Aggregator
+n_latent_queries: 8
+num_blocks: 9
+num_self_attn_per_block: 0
+
+# Loss — no KL loss (requires self-gen logprobs)
+use_kl_loss: false
+
+# Packing — reduced for single-step test
+max_packed_inp_len: 1024
+max_packed_ctx_len: 1024
+
+# Training — single step test
+gradient_accumulation_steps: 1
+max_steps: 1
+gradient_checkpointing: true
+torch_empty_cache_steps: 1
+eval_strategy: "no"
+save_strategy: "no"
+logging_steps: 1
+
+# Data — use existing datasets (no self-gen needed for sanity test)
+train_ds_names:
+  - squad_compact
+  - drop_compact
+  - ropes_compact
