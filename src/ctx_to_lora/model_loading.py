@@ -113,16 +113,33 @@ def get_model(
         use_cache=None,
     )
 
-    # MXFP4 models (e.g. GPT-OSS 20B): dequantize to bf16 for training.
+    # MXFP4 models (e.g. GPT-OSS 20B): use native kernels on Hopper+,
+    # otherwise dequantize to bf16 for training.
     _model_config = AutoConfig.from_pretrained(
         model_name_or_path, trust_remote_code=True
     )
     _quant_cfg = getattr(_model_config, "quantization_config", None)
     if _quant_cfg and _quant_cfg.get("quant_method") == "mxfp4":
-        from transformers import Mxfp4Config
-        logger.info("Model has MXFP4 quantization. Dequantizing to bf16.")
-        model_init_kwargs["quantization_config"] = Mxfp4Config(dequantize=True)
-        model_init_kwargs["torch_dtype"] = torch.bfloat16
+        _has_hopper = (
+            torch.cuda.is_available()
+            and torch.cuda.get_device_capability()[0] >= 9
+        )
+        try:
+            import kernels  # noqa: F401
+            _has_kernels = True
+        except ImportError:
+            _has_kernels = False
+
+        if _has_hopper and _has_kernels:
+            logger.info("Hopper GPU + MXFP4 kernels detected. Using native MXFP4.")
+        else:
+            from transformers import Mxfp4Config
+            logger.info(
+                "No Hopper/kernels (hopper=%s, kernels=%s). Dequantizing MXFP4 to bf16.",
+                _has_hopper, _has_kernels,
+            )
+            model_init_kwargs["quantization_config"] = Mxfp4Config(dequantize=True)
+            model_init_kwargs["torch_dtype"] = torch.bfloat16
 
     is_vision_model = check_is_vision_model(model_name_or_path)
     if model_kwargs is not None:
