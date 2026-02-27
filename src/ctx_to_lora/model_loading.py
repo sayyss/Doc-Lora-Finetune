@@ -149,7 +149,11 @@ def get_model(
         "bert" in model_name_or_path.lower() or "gte" in model_name_or_path.lower()
     )
 
-    if use_flash_attn:
+    # GPT-OSS only supports kernels-community/vllm-flash-attn3
+    _is_gpt_oss = getattr(_model_config, "model_type", "") == "gpt_oss"
+    if _is_gpt_oss:
+        model_init_kwargs["attn_implementation"] = "kernels-community/vllm-flash-attn3"
+    elif use_flash_attn:
         if "gte" not in model_name_or_path:
             model_init_kwargs["attn_implementation"] = "flash_attention_2"
         elif "gte" in model_name_or_path:
