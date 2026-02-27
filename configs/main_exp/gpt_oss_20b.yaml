@@ -34,6 +34,5 @@ logging_steps: 1
 
 # Data — use existing datasets (no self-gen needed for sanity test)
 train_ds_names:
-  - squad_compact
-  - drop_compact
-  - ropes_compact
+  - drop
+  - ropes
