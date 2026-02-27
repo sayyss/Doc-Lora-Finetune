@@ -15,6 +15,10 @@ n_latent_queries: 8
 num_blocks: 9
 num_self_attn_per_block: 0
 
+# Hypernet — match main training scripts
+per_rank_gen: true
+per_layer_processing: true
+
 # Loss — no KL loss (requires self-gen logprobs)
 use_kl_loss: false
 
