@@ -656,23 +656,25 @@ class Idefics2PerceiverResampler(Idefics2PreTrainedModel):
         elif position_ids is not None:
             logger.warning_once("Using position ids for resampler")
 
-            position_ids = position_ids.flatten()
+            position_ids_flat = position_ids.flatten()
             indices = torch.arange(
-                position_ids.size(0), device=position_ids.device, dtype=torch.int32
+                position_ids_flat.size(0), device=position_ids_flat.device, dtype=torch.int32
             )
             # [bsz + 1]
             cu_seq_lens_k = torch.cat(
                 (
-                    indices[position_ids == 0],
+                    indices[position_ids_flat == 0],
                     torch.tensor(
-                        position_ids.size(),
-                        device=position_ids.device,
+                        position_ids_flat.size(),
+                        device=position_ids_flat.device,
                         dtype=torch.int32,
                     ),
                 )
             )
 
-            max_length_k = position_ids.max() + 1
+            max_length_k = position_ids_flat.max() + 1
+            # keep 2D for newer transformers _flash_attention_forward
+            position_ids = position_ids_flat.unsqueeze(0)
 
         else:
             raise ValueError("either position_ids or attention_mask is required")
