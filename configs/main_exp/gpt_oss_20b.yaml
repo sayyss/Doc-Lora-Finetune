@@ -25,7 +25,7 @@ max_packed_ctx_len: 1024
 # Training — single step test
 gradient_accumulation_steps: 1
 max_steps: 1
-gradient_checkpointing: true
+gradient_checkpointing: false
 torch_empty_cache_steps: 1
 logging_dir: "runs/"
 eval_strategy: "no"
