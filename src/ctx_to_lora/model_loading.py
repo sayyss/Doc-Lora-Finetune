@@ -110,36 +110,19 @@ def get_model(
         torch_dtype=dtype,
         trust_remote_code=True,
         attn_implementation="eager",
-        use_cache=None,
+        use_cache=False,
     )
 
-    # MXFP4 models (e.g. GPT-OSS 20B): use native kernels on Hopper+,
-    # otherwise dequantize to bf16 for training.
+    # MXFP4 models (e.g. GPT-OSS 20B): always dequantize to bf16.
     _model_config = AutoConfig.from_pretrained(
         model_name_or_path, trust_remote_code=True
     )
     _quant_cfg = getattr(_model_config, "quantization_config", None)
     if _quant_cfg and _quant_cfg.get("quant_method") == "mxfp4":
-        _has_hopper = (
-            torch.cuda.is_available()
-            and torch.cuda.get_device_capability()[0] >= 9
-        )
-        try:
-            import kernels  # noqa: F401
-            _has_kernels = True
-        except ImportError:
-            _has_kernels = False
-
-        if _has_hopper and _has_kernels:
-            logger.info("Hopper GPU + MXFP4 kernels detected. Using native MXFP4.")
-        else:
-            from transformers import Mxfp4Config
-            logger.info(
-                "No Hopper/kernels (hopper=%s, kernels=%s). Dequantizing MXFP4 to bf16.",
-                _has_hopper, _has_kernels,
-            )
-            model_init_kwargs["quantization_config"] = Mxfp4Config(dequantize=True)
-            model_init_kwargs["torch_dtype"] = torch.bfloat16
+        from transformers import Mxfp4Config
+        logger.info("MXFP4 model detected. Dequantizing to bf16.")
+        model_init_kwargs["quantization_config"] = Mxfp4Config(dequantize=True)
+        model_init_kwargs["torch_dtype"] = torch.bfloat16
 
     is_vision_model = check_is_vision_model(model_name_or_path)
     if model_kwargs is not None:
@@ -149,10 +132,10 @@ def get_model(
         "bert" in model_name_or_path.lower() or "gte" in model_name_or_path.lower()
     )
 
-    # GPT-OSS only supports kernels-community/vllm-flash-attn3
+    # GPT-OSS: use eager attention for training (vllm-flash-attn3 is inference-only)
     _is_gpt_oss = getattr(_model_config, "model_type", "") == "gpt_oss"
     if _is_gpt_oss:
-        model_init_kwargs["attn_implementation"] = "kernels-community/vllm-flash-attn3"
+        model_init_kwargs["attn_implementation"] = "eager"
     elif use_flash_attn:
         if "gte" not in model_name_or_path:
             model_init_kwargs["attn_implementation"] = "flash_attention_2"
