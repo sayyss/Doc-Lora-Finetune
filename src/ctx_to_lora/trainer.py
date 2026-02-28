@@ -1,4 +1,5 @@
 import logging
+import os
 
 import torch
 from torch import nn
@@ -87,6 +88,17 @@ def per_ctx_loss_kl(inputs, labels, loss):
 
 
 class ModulatedModelTrainer(Trainer):
+    def _save(self, output_dir=None, state_dict=None):
+        # ModulatedPretrainedModel.state_dict() includes non-tensor items
+        # (base_model_name_or_path, hypernet_config, ctx_encoder_args) needed
+        # for loading. Use torch.save instead of safetensors.
+        output_dir = output_dir if output_dir is not None else self.args.output_dir
+        os.makedirs(output_dir, exist_ok=True)
+        model = self.accelerator.unwrap_model(self.model)
+        if state_dict is None:
+            state_dict = model.state_dict()
+        torch.save(state_dict, os.path.join(output_dir, "pytorch_model.bin"))
+
     # modified from the base Trainer to support per-context average loss
     def get_batch_samples(self, epoch_iterator, num_batches, device):
         # only used with `use_per_ctx_average_loss=True`

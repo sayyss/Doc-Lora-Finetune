@@ -28,7 +28,9 @@ def lora_forward(
     # B: [n_ctx, d_out, r] -> [tot_q, d_out, r]
     B = B.repeat_interleave(n_qs, dim=0, output_size=tot_q)
 
-    base_out = torch.nn.Linear.forward(self, x, *args, **kwargs)
+    # Use base_layer(x) instead of torch.nn.Linear.forward(self, x) to support
+    # quantized linear layers (e.g. MXFP4) that override forward for dequantization.
+    base_out = self.base_layer(x, *args, **kwargs)
     x = x.to(A.dtype)
     delta_x = F.dropout(x, p=lora_dropout_p, training=self.training)
     delta_x = einsum(A, delta_x, "tot_q r d_in, tot_q s_len d_in -> tot_q s_len r")
@@ -52,7 +54,9 @@ def lora_forward_packed(
     **kwargs,
 ) -> Float[Tensor, "1 tot_len d_out"]:
     # bs of x should be 1 in this case
-    base_out = torch.nn.Linear.forward(self, x, *args, **kwargs)
+    # Use base_layer(x) instead of torch.nn.Linear.forward(self, x) to support
+    # quantized linear layers (e.g. MXFP4) that override forward for dequantization.
+    base_out = self.base_layer(x, *args, **kwargs)
     x = x.to(A.dtype)
     delta_x = F.dropout(x, p=lora_dropout_p, training=self.training)
     repeated_A = A.repeat_interleave(n_qs, dim=0, output_size=tot_q)
