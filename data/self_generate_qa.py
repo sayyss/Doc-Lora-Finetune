@@ -32,6 +32,7 @@ from ctx_to_lora.utils import clear_gpu
 
 STOP_STRINGS = {
     "google/gemma-2-2b-it": ["<eos>", "<end_of_turn>"],
+    "openai/gpt-oss-20b": ["<|end|>", "<|return|>"],
 }
 
 MODEL_CTX_LEN = {
@@ -40,6 +41,7 @@ MODEL_CTX_LEN = {
     "google/gemma-2-9b-it": 8192,
     # qwen 4b has 256k ctx length but using lower max lengths is faster
     "Qwen/Qwen3-4B-Instruct-2507": 2**13 + 2**12,
+    "openai/gpt-oss-20b": 8192,  # supports 128k but limit for memory
 }
 
 
@@ -139,29 +141,32 @@ def create_messages(
     remove_qa_template: bool,
 ) -> list[list[dict]]:
     """Create chat messages for the model."""
-    # if "gemma" in vllm_model:
-    # gemma models do not support system messages
-    return [
-        [
-            {
-                "role": "user",
-                "content": (
-                    system_template + "\n\n\n" + get_prompt(ctx, q, remove_qa_template)
-                ).strip(),
-            }
+    if "gemma" in vllm_model.lower():
+        # Gemma doesn't support system messages — inline everything
+        return [
+            [
+                {
+                    "role": "user",
+                    "content": (
+                        system_template
+                        + "\n\n\n"
+                        + get_prompt(ctx, q, remove_qa_template)
+                    ).strip(),
+                }
+            ]
+            for ctx, q_list in zip(ctxs, questions)
+            for q in q_list
         ]
-        for ctx, q_list in zip(ctxs, questions)
-        for q in q_list
-    ]
-    # else:
-    #     return [
-    #         [
-    #             {"role": "system", "content": system_template},
-    #             {"role": "user", "content": get_prompt(ctx, q)},
-    #         ]
-    #         for ctx, q_list in zip(ctxs, questions)
-    #         for q in q_list
-    #     ]
+    else:
+        # Models with system message support (GPT-OSS, Qwen, etc.)
+        return [
+            [
+                {"role": "system", "content": system_template},
+                {"role": "user", "content": get_prompt(ctx, q, remove_qa_template)},
+            ]
+            for ctx, q_list in zip(ctxs, questions)
+            for q in q_list
+        ]
 
 
 def self_generate(

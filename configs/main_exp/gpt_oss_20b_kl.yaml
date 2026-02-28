@@ -1,0 +1,48 @@
+# GPT-OSS 20B with KL distillation loss
+
+# LoRA — target q_proj (attention, not MLP)
+lora_r: 8
+lora_dropout: 0.0
+target_modules:
+  - q_proj
+
+# Loss — KL distillation (requires self-gen logprobs)
+use_kl_loss: true
+
+# Context encoder
+ctx_encoder_type: per_layer_activations
+
+# Aggregator
+n_latent_queries: 8
+num_blocks: 9
+num_self_attn_per_block: 0
+
+# Hypernet
+per_rank_gen: true
+per_layer_processing: true
+
+# Packing
+max_packed_inp_len: 1024
+max_packed_ctx_len: 1024
+
+# Training
+gradient_accumulation_steps: 1
+gradient_checkpointing: true
+torch_empty_cache_steps: 1
+logging_dir: "runs/"
+eval_strategy: "no"
+save_strategy: "steps"
+save_steps: 5000
+logging_steps: 1
+
+# Data — self-gen datasets with logprobs
+train_ds_names:
+  - self_gen/openai/gpt-oss-20b_temp_0.0_closed_qa_prob_1.0/squad_compact
+  - self_gen/openai/gpt-oss-20b_temp_0.0_closed_qa_prob_1.0/ropes_compact
+  - self_gen/openai/gpt-oss-20b_temp_0.0_closed_qa_prob_1.0/drop_compact
+  - self_gen/openai/gpt-oss-20b_temp_0.0_closed_qa_prob_0.0/pwc_compact
+
+val_ds_names:
+  - squad
+  - drop
+  - ropes
