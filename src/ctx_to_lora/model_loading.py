@@ -118,11 +118,17 @@ def get_model(
         model_name_or_path, trust_remote_code=True
     )
     _quant_cfg = getattr(_model_config, "quantization_config", None)
-    if _quant_cfg and _quant_cfg.get("quant_method") == "mxfp4":
+    _is_mxfp4 = _quant_cfg and _quant_cfg.get("quant_method") == "mxfp4"
+    if _is_mxfp4:
         from transformers import Mxfp4Config
         logger.info("MXFP4 model detected. Dequantizing to bf16.")
         model_init_kwargs["quantization_config"] = Mxfp4Config(dequantize=True)
         model_init_kwargs["torch_dtype"] = torch.bfloat16
+        if use_q_lora:
+            # BitsAndBytes can't be combined with MXFP4; load to CPU instead
+            # so the ctx encoder can be trimmed before moving to GPU.
+            logger.info("MXFP4 + quantize_ctx_encoder: loading to CPU (will trim layers).")
+            model_init_kwargs["device_map"] = "cpu"
 
     is_vision_model = check_is_vision_model(model_name_or_path)
     if model_kwargs is not None:
@@ -150,7 +156,7 @@ def get_model(
         model_init_kwargs["torch_dtype"] = torch.float32
         model_init_kwargs.pop("use_cache")
 
-    if use_q_lora:
+    if use_q_lora and not _is_mxfp4:
         # https://huggingface.co/blog/4bit-transformers-bitsandbytes
         # https://colab.research.google.com/drive/1VoYNfYDKcKRQRor98Zbf2-9VQTtGJ24k?usp=sharing
         # see bitsandbytes for the quantization implementation https://github.com/bitsandbytes-foundation/bitsandbytes
