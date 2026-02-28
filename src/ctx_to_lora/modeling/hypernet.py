@@ -557,6 +557,12 @@ class ModulatedPretrainedModel(nn.Module):
             self.ctx_encoder = self.ctx_encoder.to(self.device)
 
     # delegate to base_model
+    def gradient_checkpointing_enable(self, gradient_checkpointing_kwargs=None):
+        self.base_model.gradient_checkpointing_enable(gradient_checkpointing_kwargs)
+
+    def gradient_checkpointing_disable(self):
+        self.base_model.gradient_checkpointing_disable()
+
     @property
     def config(self):
         return self.base_model.config
