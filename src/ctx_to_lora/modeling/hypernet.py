@@ -461,6 +461,10 @@ class ModulatedPretrainedModel(nn.Module):
         self.inp_compressor = inp_compressor
         self.model_accepts_loss_kwargs = True
         self.generated_loras = None
+        # Tell HF Trainer the model uses model-parallelism (device_map="auto"),
+        # so it should NOT multiply batch_size by n_gpu.
+        self.is_parallelizable = True
+        self.model_parallel = True
 
         self.register_module("base_model", base_model)
         self._init_model()

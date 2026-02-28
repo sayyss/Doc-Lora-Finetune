@@ -7,7 +7,7 @@
 #   bash scripts/setup_h100_pod.sh
 #
 # After setup, run sanity test:
-#   WANDB_MODE=disabled .venv/bin/python train.py \
+#   WANDB_MODE=disabled .venv/bin/python -m accelerate.commands.launch --num_processes=1 train.py \
 #       configs/main_exp/gpt_oss_20b.yaml \
 #       --model_name_or_path=openai/gpt-oss-20b --max_steps=1 --output_dir=runs/gpt_oss_sanity
 set -e
@@ -95,13 +95,13 @@ print(f'Triton: {triton.__version__}')
 echo ""
 echo "=== Setup complete! ==="
 echo ""
-echo "Run sanity test (1 step, no accelerate — device_map=auto spans both GPUs):"
-echo "  WANDB_MODE=disabled .venv/bin/python train.py \\"
+echo "Run sanity test (1 step, single process so device_map=auto spans both GPUs):"
+echo "  WANDB_MODE=disabled .venv/bin/python -m accelerate.commands.launch --num_processes=1 train.py \\"
 echo "      configs/main_exp/gpt_oss_20b.yaml \\"
 echo "      --model_name_or_path=openai/gpt-oss-20b --max_steps=1 --output_dir=runs/gpt_oss_sanity"
 echo ""
 echo "Run full training (~20k steps):"
-echo "  WANDB_MODE=disabled .venv/bin/python train.py \\"
+echo "  WANDB_MODE=disabled .venv/bin/python -m accelerate.commands.launch --num_processes=1 train.py \\"
 echo "      configs/main_exp/gpt_oss_20b.yaml \\"
 echo "      --model_name_or_path=openai/gpt-oss-20b --max_steps=20000 --output_dir=runs/gpt_oss_full"
 echo ""
