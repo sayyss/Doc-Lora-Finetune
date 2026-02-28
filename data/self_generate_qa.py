@@ -230,7 +230,7 @@ def self_generate(
         print(f"Loading dataset: {ds_name} with split: {split}")
         kwargs = dict(ds_name=ds_name, split=split)
 
-        ds = load_and_process_dataset(**kwargs, num_proc=8, remove_cols=False)
+        ds = load_and_process_dataset(**kwargs, add_negative_prompt=False, num_proc=8, remove_cols=False)
     print(f"Loaded dataset: {ds_name} with split: {split}")
 
     if args.debug:
