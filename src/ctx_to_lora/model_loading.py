@@ -36,7 +36,7 @@ def get_model_and_tokenizer(
     model_kwargs=None,
     tokenizer_kwargs=None,
     use_q_lora=False,
-    device="auto",
+    device="cuda",
     dtype=torch.bfloat16,
 ):
     model = get_model(
@@ -101,7 +101,7 @@ def get_model(
     peft_config=None,
     model_kwargs=None,
     use_q_lora=False,
-    device="auto",
+    device="cuda",
     dtype=torch.bfloat16,
 ):
     model_init_kwargs = dict(
