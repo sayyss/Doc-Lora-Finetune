@@ -27,6 +27,7 @@ max_packed_inp_len: 1024
 max_packed_ctx_len: 1024
 
 # Training — single step test
+per_device_train_batch_size: 1
 gradient_accumulation_steps: 1
 max_steps: 1
 gradient_checkpointing: true
