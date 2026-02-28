@@ -91,9 +91,9 @@ class ModulatedModelTrainer(Trainer):
     # Packed data requires batch_size=1. The base Trainer multiplies
     # per_device_train_batch_size by n_gpu (for DataParallel), which
     # breaks when using device_map="auto" on multi-GPU.
-    @property
-    def _train_batch_size(self):
-        return self.args.per_device_train_batch_size
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._train_batch_size = self.args.per_device_train_batch_size
 
     def _save(self, output_dir=None, state_dict=None):
         # ModulatedPretrainedModel.state_dict() includes non-tensor items
