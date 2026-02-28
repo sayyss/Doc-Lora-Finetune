@@ -550,11 +550,6 @@ class ModulatedPretrainedModel(nn.Module):
         self.ctx_encoder = CTX_ENCODER_CLS[self.ctx_encoder_args.ctx_encoder_type](
             encoder_model, self.ctx_encoder_args
         )
-        # Move ctx encoder to GPU if it was loaded on CPU (e.g. MXFP4 models
-        # that can't use BitsAndBytes and are loaded to CPU to avoid OOM).
-        if next(self.ctx_encoder.parameters()).device.type == "cpu":
-            logger.info("Moving trimmed ctx encoder to GPU.")
-            self.ctx_encoder = self.ctx_encoder.to(self.device)
 
     # delegate to base_model
     def gradient_checkpointing_enable(self, gradient_checkpointing_kwargs=None):

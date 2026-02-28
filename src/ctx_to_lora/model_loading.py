@@ -36,7 +36,7 @@ def get_model_and_tokenizer(
     model_kwargs=None,
     tokenizer_kwargs=None,
     use_q_lora=False,
-    device="cuda",
+    device="auto",
     dtype=torch.bfloat16,
 ):
     model = get_model(
@@ -101,7 +101,7 @@ def get_model(
     peft_config=None,
     model_kwargs=None,
     use_q_lora=False,
-    device="cuda",
+    device="auto",
     dtype=torch.bfloat16,
 ):
     model_init_kwargs = dict(
@@ -124,11 +124,6 @@ def get_model(
         logger.info("MXFP4 model detected. Dequantizing to bf16.")
         model_init_kwargs["quantization_config"] = Mxfp4Config(dequantize=True)
         model_init_kwargs["torch_dtype"] = torch.bfloat16
-        if use_q_lora:
-            # BitsAndBytes can't be combined with MXFP4; load to CPU instead
-            # so the ctx encoder can be trimmed before moving to GPU.
-            logger.info("MXFP4 + quantize_ctx_encoder: loading to CPU (will trim layers).")
-            model_init_kwargs["device_map"] = "cpu"
 
     is_vision_model = check_is_vision_model(model_name_or_path)
     if model_kwargs is not None:

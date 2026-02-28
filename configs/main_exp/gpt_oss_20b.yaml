@@ -9,7 +9,6 @@ target_modules:
 
 # Context encoder — use same model (defaults to base model when unset)
 ctx_encoder_type: per_layer_activations
-quantize_ctx_encoder: true
 
 # Aggregator
 n_latent_queries: 8
