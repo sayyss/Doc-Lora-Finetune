@@ -1,10 +1,13 @@
 # GPT-OSS 20B with KL distillation loss
 
-# LoRA — target q_proj (attention, not MLP)
+# LoRA — target all attention projections (4x capacity vs q_proj only)
 lora_r: 8
 lora_dropout: 0.0
 target_modules:
   - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
 
 # Loss — KL distillation (requires self-gen logprobs)
 use_kl_loss: true
