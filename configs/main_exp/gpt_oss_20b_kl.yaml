@@ -8,6 +8,9 @@ target_modules:
   - k_proj
   - v_proj
   - o_proj
+moe_target_modules:
+  - down_proj
+moe_lora_strategy: shared  # shared = full R per fired expert, split = R/top_k per fired expert
 
 # Loss — KL distillation (requires self-gen logprobs)
 use_kl_loss: true

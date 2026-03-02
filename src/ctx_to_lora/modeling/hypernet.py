@@ -46,10 +46,12 @@ from ctx_to_lora.modeling.lora_layer import (
     apply_lora_to_layers,
     lora_forward,
     lora_forward_packed,
+    moe_lora_forward_packed,
 )
 from ctx_to_lora.modeling.lora_merger import combine_lora
 from ctx_to_lora.utils import (
     get_layers,
+    get_moe_in_out_features,
     get_num_layers,
     get_peft_in_out_features,
     get_peft_modules,
@@ -78,6 +80,8 @@ class HypernetConfig:
     layer_indices: Iterable[int]
     feature_sizes: tuple[dict[str, int], dict[str, int]]
     aggregator_config: AggregatorConfig
+    moe_target_modules: list[str] | None = None
+    moe_lora_strategy: str = "shared"  # "shared" or "split"
 
 
 def get_hypernet_config(
@@ -86,6 +90,8 @@ def get_hypernet_config(
     hypernet_args: HypernetArguments,
     aggregator_args: AggregatorArguments,
     ctx_encoder_args: CtxEncoderArguments,
+    moe_target_modules: list[str] | None = None,
+    moe_lora_strategy: str = "shared",
 ):
     num_modules = 0
     lora_config = getattr(model, "peft_config", None)
@@ -94,12 +100,24 @@ def get_hypernet_config(
         num_modules += len(lora_config.target_modules)
     num_extra_modules = len(hypernet_args.extra_modules or [])
     indices = torch.arange(get_num_layers(model), device=model.device)
+
+    peft_in, peft_out = get_peft_in_out_features(model, peft_config=lora_config)
+    if moe_target_modules:
+        moe_in, moe_out = get_moe_in_out_features(model, moe_target_modules)
+        merged_in = {**(peft_in or {}), **moe_in}
+        merged_out = {**(peft_out or {}), **moe_out}
+        num_modules += len(moe_target_modules)
+    else:
+        merged_in, merged_out = peft_in, peft_out
+
     return HypernetConfig(
         **vars(hypernet_args),
         base_hidden_size=model.config.hidden_size,
         lora_config=lora_config,
         layer_indices=indices,
-        feature_sizes=get_peft_in_out_features(model, peft_config=lora_config),
+        feature_sizes=(merged_in, merged_out),
+        moe_target_modules=moe_target_modules,
+        moe_lora_strategy=moe_lora_strategy,
         aggregator_config=get_aggregator_config(
             model,
             ctx_encoder_model_config,
@@ -233,9 +251,11 @@ class HyperLoRA(nn.Module):
         self.lora_config = self.config.lora_config
         self.r = self.lora_config.r
 
-        self.target_modules = (
-            tuple(sorted(self.lora_config.target_modules)) if self.lora_config else None
-        )
+        peft_targets = tuple(sorted(self.lora_config.target_modules)) if self.lora_config else ()
+        moe_targets = tuple(sorted(self.config.moe_target_modules)) if self.config.moe_target_modules else ()
+        self.peft_target_modules = peft_targets
+        self.moe_target_modules = moe_targets
+        self.target_modules = tuple(sorted(set(peft_targets + moe_targets)))
         self.num_modules = len(self.target_modules) if self.target_modules else 0
         self.extra_modules = (
             self.config.extra_modules if self.config.extra_modules else None
@@ -493,6 +513,10 @@ class ModulatedPretrainedModel(nn.Module):
             hypernet_config.use_per_rank_bias = False
         if getattr(hypernet_config, "use_bias", None) is None:
             hypernet_config.use_bias = True
+        if getattr(hypernet_config, "moe_target_modules", None) is None:
+            hypernet_config.moe_target_modules = None
+        if getattr(hypernet_config, "moe_lora_strategy", None) is None:
+            hypernet_config.moe_lora_strategy = "shared"
         ctx_encoder_args = state_dict["ctx_encoder_args"]
         model = cls(base_model, hypernet_config, ctx_encoder_args, **kwargs)
         model.load_state_dict(state_dict)
@@ -519,6 +543,22 @@ class ModulatedPretrainedModel(nn.Module):
                     lora_dropout_p=self.peft_config.lora_dropout,
                     scaling=self.peft_config.lora_alpha,
                 )
+
+        # Patch MoE expert forwards
+        if self.hypernet.moe_target_modules:
+            moe_fn = moe_lora_forward_packed if self.use_sequence_packing else moe_lora_forward_packed
+            for layer_idx in self.hypernet.layer_indices:
+                experts = layers[layer_idx].mlp.experts
+                if not getattr(experts, "moe_patched_forward", False):
+                    experts.forward_orig = experts.forward
+                    experts.moe_patched_forward = True
+                    experts.forward = partial(
+                        moe_fn,
+                        self_module=experts,
+                        lora_dropout_p=self.peft_config.lora_dropout,
+                        scaling=self.peft_config.lora_alpha,
+                        moe_lora_strategy=self.hypernet_config.moe_lora_strategy,
+                    )
 
     def _init_model(self):
         # disable adapter of the base model
@@ -770,6 +810,7 @@ class ModulatedPretrainedModel(nn.Module):
                 generated_loras,
                 n_queries,
                 position_ids,
+                moe_target_modules=list(self.hypernet.moe_target_modules) or None,
             )
         model_outputs = self.base_model(*model_inputs_args, **model_inputs_kwargs)
 
@@ -817,6 +858,12 @@ class ModulatedPretrainedModel(nn.Module):
                 logger.debug(f"Resetting forward for {name}")
                 module.forward = module.forward_orig
                 module.patched_forward = False
+            # Reset MoE patched forwards
+            if self.hypernet.moe_target_modules:
+                experts = layers[layer_idx].mlp.experts
+                if getattr(experts, "moe_patched_forward", False):
+                    experts.forward = experts.forward_orig
+                    experts.moe_patched_forward = False
 
     @torch.inference_mode()
     def generate(
@@ -913,6 +960,7 @@ class ModulatedPretrainedModel(nn.Module):
                 generated_loras,
                 n_queries,
                 position_ids,
+                moe_target_modules=list(self.hypernet.moe_target_modules) or None,
             )
 
         model_outputs = self.base_model.generate(

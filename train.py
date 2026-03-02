@@ -153,6 +153,11 @@ def main():
     save_yaml(args, f"{output_dir}/args.yaml")
 
     ############ Model setup
+    moe_target_modules = getattr(lora_args, "moe_target_modules", None)
+    moe_lora_strategy = getattr(lora_args, "moe_lora_strategy", "shared")
+    if moe_target_modules and not lora_args.target_modules:
+        lora_args.target_modules = ["q_proj"]  # dummy for PeftModel infrastructure
+
     if not ctx_args.from_pretrained_checkpoint:
         model_name = model_args.model_name_or_path
         base_model, tokenizer = get_model_and_tokenizer(
@@ -185,6 +190,8 @@ def main():
                 hypernet_args,
                 aggregator_args,
                 ctx_encoder_args,
+                moe_target_modules=moe_target_modules,
+                moe_lora_strategy=moe_lora_strategy,
             )
             if ctx_encoder_args.layer_idx is None:
                 ctx_encoder_args.layer_idx = (

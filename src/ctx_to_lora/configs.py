@@ -325,6 +325,17 @@ class LoRAArguments:
         default=None,
         metadata={"help": ("LoRA target modules.")},
     )
+    moe_target_modules: list[str] | None = field(
+        default=None,
+        metadata={"help": "MoE expert target modules (nn.Parameter). LoRA applied to fired experts only."},
+    )
+    moe_lora_strategy: str = field(
+        default="shared",
+        metadata={
+            "help": "MoE LoRA strategy: 'shared' = full rank R to each fired expert, "
+            "'split' = rank R/top_k per fired expert (unique slice per rank position)."
+        },
+    )
 
 
 @dataclass

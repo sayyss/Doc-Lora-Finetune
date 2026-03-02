@@ -203,6 +203,18 @@ def get_peft_in_out_features(
     return in_features, out_features
 
 
+def get_moe_in_out_features(model, moe_target_modules):
+    """Read dimensions from MoE expert parameter shapes (e.g. GptOssExperts)."""
+    layers = get_layers(model)
+    experts = layers[0].mlp.experts
+    in_features, out_features = {}, {}
+    for target in moe_target_modules:
+        param = getattr(experts, target)  # [n_experts, d_in, d_out]
+        in_features[target] = param.shape[1]
+        out_features[target] = param.shape[2]
+    return in_features, out_features
+
+
 def generated_lora_to_state_dict(
     lora_dict: dict,
     module_names: dict,

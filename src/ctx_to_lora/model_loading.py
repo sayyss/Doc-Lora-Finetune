@@ -183,6 +183,8 @@ def get_model(
 
 
 def get_lora_config(model_dir, **kwargs):
+    kwargs.pop("moe_target_modules", None)  # handled separately in hypernet
+    kwargs.pop("moe_lora_strategy", None)
     if "target_modules" not in kwargs or kwargs["target_modules"] is None:
         logger.info("No target modules specified for LoRA.")
         return None
