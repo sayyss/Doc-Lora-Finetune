@@ -1,13 +1,41 @@
 import logging
 import os
+import time
 
 import torch
 from torch import nn
-from transformers import Trainer
+from transformers import Trainer, TrainerCallback
 from transformers.trainer_pt_utils import get_parameter_names
 from transformers.trainer_utils import IntervalStrategy
 
 from ctx_to_lora.modeling.hypernet import ModulatedPretrainedModel
+
+
+class GracefulStopCallback(TrainerCallback):
+    """Stop training gracefully via file signal or time limit.
+
+    - File signal: ``touch STOP_TRAINING`` in the working directory.
+    - Time limit: set ``max_hours`` to auto-stop after that many hours.
+    """
+
+    def __init__(self, signal_file="STOP_TRAINING", max_hours=None):
+        self.signal_file = signal_file
+        self.max_seconds = max_hours * 3600 if max_hours else None
+        self.start = time.time()
+
+    def on_step_end(self, args, state, control, **kwargs):
+        stop = False
+        if os.path.exists(self.signal_file):
+            logger.info(f"Stop signal detected ({self.signal_file}). Saving and stopping.")
+            os.remove(self.signal_file)
+            stop = True
+        if self.max_seconds and (time.time() - self.start) > self.max_seconds:
+            elapsed_h = (time.time() - self.start) / 3600
+            logger.info(f"Time limit reached ({elapsed_h:.1f}h). Saving and stopping.")
+            stop = True
+        if stop:
+            control.should_save = True
+            control.should_training_stop = True
 
 logger = logging.getLogger()
 
@@ -456,6 +484,10 @@ def train_model(
     trainer = trainer_cls(**trainer_kwargs)
     # if getattr(trainer, "use_per_ctx_average_loss", False):
     #     trainer.get_batch_samples = trainer.get_batch_samples_ctx
+
+    # Graceful stop: `touch STOP_TRAINING` or set MAX_TRAIN_HOURS env var
+    max_hours = float(os.getenv("MAX_TRAIN_HOURS")) if os.getenv("MAX_TRAIN_HOURS") else None
+    trainer.add_callback(GracefulStopCallback(max_hours=max_hours))
 
     # MONKEY PATCH: remove embedding layers from weight decay
     trainer.get_decay_parameter_names = get_decay_parameter_names

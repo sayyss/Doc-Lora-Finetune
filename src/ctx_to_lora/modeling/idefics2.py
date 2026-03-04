@@ -651,7 +651,12 @@ class Idefics2PerceiverResampler(Idefics2PreTrainedModel):
                 context, attention_mask
             )
             context = context.unsqueeze(0)
-            position_ids = True  # goes down flash attn path that uses cu_seq_lens
+            # Build proper position_ids from cu_seq_lens_k (older hack used `True`)
+            pos_parts = []
+            for i in range(bsz):
+                seq_len = (cu_seq_lens_k[i + 1] - cu_seq_lens_k[i]).item()
+                pos_parts.append(torch.arange(seq_len, device=context.device, dtype=torch.long))
+            position_ids = torch.cat(pos_parts).unsqueeze(0)
 
         elif position_ids is not None:
             logger.warning_once("Using position ids for resampler")
