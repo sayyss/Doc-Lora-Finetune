@@ -674,8 +674,8 @@ class Idefics2PerceiverResampler(Idefics2PreTrainedModel):
             )
 
             max_length_k = position_ids_flat.max() + 1
-            # keep 2D for newer transformers _flash_attention_forward
-            position_ids = position_ids_flat.unsqueeze(0)
+            # cu_seq_lens_q/k are passed via **kwargs to _flash_attention_forward
+            position_ids = None
 
         else:
             raise ValueError("either position_ids or attention_mask is required")
@@ -686,12 +686,9 @@ class Idefics2PerceiverResampler(Idefics2PreTrainedModel):
             max_length_q=max_length_q,
             max_length_k=max_length_k,
         )
-        self_attn_position_ids = torch.arange(
-            self.n_latents, device=context.device, dtype=torch.int32
-        ).repeat(1, bsz)
         self_attn_kwargs = dict(
             # attention_mask=self_attn_mask,
-            position_ids=self_attn_position_ids,
+            position_ids=None,
             cu_seq_lens_q=cu_seq_lens_q,
             cu_seq_lens_k=cu_seq_lens_q,
             max_length_q=max_length_q,
