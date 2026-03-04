@@ -14,7 +14,7 @@ model_name = "openai/gpt-oss-20b"
 base_model, tokenizer = get_model_and_tokenizer(
     model_name_or_path=model_name, train=True, requires_grad=False,
     peft_config=get_lora_config(model_name, target_modules=["q_proj"], lora_r=8, lora_dropout=0.0),
-    use_flash_attn=True,
+    use_flash_attn=False,
 )
 
 moe_target_modules = ["down_proj"]
