@@ -230,19 +230,6 @@ class DistillationTrainer(ModulatedModelTrainer):
         total_loss = loss + self.gen_lora_l1_reg_coef * l1_norm
         #####
 
-        # === GRADIENT DEBUG (temporary) ===
-        if is_train and not getattr(self, "_grad_debug_done", False):
-            self._grad_debug_done = True
-            print(f"[GRAD DEBUG] total_loss.requires_grad={total_loss.requires_grad}")
-            print(f"[GRAD DEBUG] loss.requires_grad={loss.requires_grad}")
-            print(f"[GRAD DEBUG] outputs.logits.requires_grad={outputs.logits.requires_grad}")
-            if gen_loras:
-                for mname, lora in gen_loras.items():
-                    print(f"[GRAD DEBUG] gen_loras[{mname}][A].requires_grad={lora['A'].requires_grad}")
-                    print(f"[GRAD DEBUG] gen_loras[{mname}][B].requires_grad={lora['B'].requires_grad}")
-                    break
-        # === END GRADIENT DEBUG ===
-
         scaler = self.args.gradient_accumulation_steps if is_train else 1
         if self.args.average_tokens_across_devices and is_train:
             total_loss *= self.accelerator.num_processes

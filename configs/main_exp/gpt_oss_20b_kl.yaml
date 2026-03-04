@@ -28,8 +28,8 @@ per_rank_gen: true
 per_layer_processing: true
 
 # Packing
-max_packed_inp_len: 6144
-max_packed_ctx_len: 6144
+max_packed_inp_len: 3072
+max_packed_ctx_len: 3072
 
 # Training
 gradient_accumulation_steps: 11
