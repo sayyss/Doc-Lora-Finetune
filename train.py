@@ -246,7 +246,10 @@ def main():
         if len([p for p in model.base_model.parameters() if p.requires_grad]):
             raise ValueError("base model contains trainable parameters")
 
-        model.hypernet.compile(fullgraph=True, mode="max-autotune")
+        if not os.getenv("SKIP_COMPILE"):
+            model.hypernet.compile(fullgraph=True, mode="max-autotune")
+        else:
+            logger.info("SKIP_COMPILE set — skipping hypernet compile")
 
     else:
         # activate LoRA
@@ -376,8 +379,11 @@ def main():
     elif isinstance(model, PeftModel):
         base_model = model.base_model
 
-    logger.info("Compiling base_model")
-    base_model.compile(fullgraph=True, mode="max-autotune")
+    if not os.getenv("SKIP_COMPILE"):
+        logger.info("Compiling base_model")
+        base_model.compile(fullgraph=True, mode="max-autotune")
+    else:
+        logger.info("SKIP_COMPILE set — skipping base_model compile")
 
     if LOCAL_RANK == 0:
         wandb.init(
