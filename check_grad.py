@@ -3,10 +3,10 @@ import os, torch
 os.environ["TRANSFORMERS_NO_ADVISORY_WARNINGS"] = "true"
 os.environ["TOKENIZERS_PARALLELISM"] = "true"
 
-from ctx_to_lora.configs import ArgumentParser, DataArguments, CtxTrainingArguments, ModelArguments, LoRAArguments, TrainingArguments, HypernetArguments, AggregatorArguments, CtxEncoderArguments, ExperimentSetup
-from ctx_to_lora.model_loading import get_model_and_tokenizer, get_lora_config, get_tokenizer
+from ctx_to_lora.model_loading import get_model_and_tokenizer, get_lora_config
 from ctx_to_lora.modeling.hypernet import ModulatedPretrainedModel, get_hypernet_config
-from transformers import AutoConfig, set_seed
+from ctx_to_lora.configs import HypernetArguments, AggregatorArguments, CtxEncoderArguments
+from transformers import set_seed
 
 set_seed(42)
 
@@ -19,19 +19,23 @@ base_model, tokenizer = get_model_and_tokenizer(
 
 moe_target_modules = ["down_proj"]
 ctx_encoder_model_config = base_model.config
+
+# Use real dataclass instances with defaults
+hypernet_args = HypernetArguments(per_rank_gen=True, per_layer_processing=True, num_pre_head_layers=4)
+aggregator_args = AggregatorArguments(n_latent_queries=8, num_blocks=9, num_self_attn_per_block=0)
+ctx_encoder_args = CtxEncoderArguments(
+    ctx_encoder_type="per_layer_activations",
+    ctx_encoder_model_name_or_path=None,
+    layer_idx=6,
+    ctx_encoder_last_layer=None,
+)
+
 hypernet_config = get_hypernet_config(
     base_model, ctx_encoder_model_config,
-    type("H", (), {"per_rank_gen": True, "per_layer_processing": True, "num_pre_head_layers": 4})(),
-    type("A", (), {"n_latent_queries": 8, "num_blocks": 9, "num_self_attn_per_block": 0})(),
-    type("C", (), {"ctx_encoder_type": "per_layer_activations", "ctx_encoder_model_name_or_path": None, "layer_idx": None, "ctx_encoder_last_layer": None})(),
+    hypernet_args, aggregator_args, ctx_encoder_args,
     moe_target_modules=moe_target_modules,
     moe_lora_strategy="shared",
 )
-
-ctx_encoder_args = type("CE", (), {
-    "ctx_encoder_model_name_or_path": None, "layer_idx": 6, "ctx_encoder_last_layer": None,
-    "ctx_encoder_type": "per_layer_activations",
-})()
 
 model = ModulatedPretrainedModel(base_model, hypernet_config, ctx_encoder_args)
 model.train()
@@ -71,11 +75,11 @@ for name, param in model.hypernet.named_parameters():
         total_params += 1
         if param.grad is None:
             none_grad_params += 1
-            if total_params <= 5:
+            if none_grad_params <= 5:
                 print(f"  NONE grad: {name}")
         elif param.grad.abs().sum() == 0:
             zero_grad_params += 1
-            if total_params <= 5:
+            if zero_grad_params <= 5:
                 print(f"  ZERO grad: {name}")
         else:
             nonzero_grad_params += 1
