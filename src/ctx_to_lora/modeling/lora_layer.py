@@ -76,6 +76,87 @@ def lora_forward_packed(
     return (base_out + delta_x).to(base_out.dtype)
 
 
+def moe_lora_forward(
+    hidden_states,
+    router_indices,
+    routing_weights,
+    moe_lora_params=None,
+    self_module=None,
+    lora_dropout_p=0.0,
+    scaling=1.0,
+    moe_lora_strategy="shared",
+):
+    """Non-packed MoE LoRA forward. A/B are [tot_q, r, d] — one per query (batch item).
+    Each token in a batch item shares the same A/B.
+    """
+    if moe_lora_params is None:
+        return self_module.forward_orig(hidden_states, router_indices, routing_weights)
+
+    batch_size = hidden_states.shape[0]
+    seq_len = hidden_states.shape[1]
+    hs_flat = hidden_states.reshape(-1, self_module.hidden_size)
+    num_experts = routing_weights.shape[1]
+    top_k = router_indices.shape[1]
+    next_states = torch.zeros_like(hs_flat)
+
+    if moe_lora_strategy == "split":
+        expert_rank_pos = torch.full(
+            (hs_flat.shape[0], num_experts), -1,
+            dtype=torch.long, device=hidden_states.device,
+        )
+        for k in range(top_k):
+            expert_rank_pos.scatter_(1, router_indices[:, k:k+1], k)
+
+    with torch.no_grad():
+        expert_mask = F.one_hot(router_indices, num_classes=num_experts + 1).permute(2, 1, 0)
+        expert_hit = torch.greater(expert_mask.sum(dim=(-1, -2)), 0).nonzero()
+
+    for expert_idx in expert_hit[:]:
+        expert_idx = expert_idx[0]
+        if expert_idx == num_experts:
+            continue
+        with torch.no_grad():
+            _, token_idx = torch.where(expert_mask[expert_idx])
+        current_state = hs_flat[token_idx]
+
+        gate_up = current_state @ self_module.gate_up_proj[expert_idx] + self_module.gate_up_proj_bias[expert_idx]
+        gate, up = gate_up[..., ::2], gate_up[..., 1::2]
+        gate = gate.clamp(min=None, max=self_module.limit)
+        up = up.clamp(min=-self_module.limit, max=self_module.limit)
+        glu = gate * torch.sigmoid(gate * self_module.alpha)
+        gated_output = (up + 1) * glu
+
+        out = gated_output @ self_module.down_proj[expert_idx] + self_module.down_proj_bias[expert_idx]
+
+        if "down_proj" in moe_lora_params:
+            # A/B: [tot_q, r, d] — expand to per-token by mapping token_idx to batch item
+            A_all = moe_lora_params["down_proj"]["A"]  # [tot_q, r, d_in]
+            B_all = moe_lora_params["down_proj"]["B"]  # [tot_q, r, d_out]
+            # token_idx is flat index into [batch_size * seq_len]
+            # batch item = token_idx // seq_len
+            batch_idx = token_idx // seq_len
+            A = A_all[batch_idx]
+            B = B_all[batch_idx]
+
+            if moe_lora_strategy == "split":
+                r_per_k = A.shape[1] // top_k
+                rank_pos = expert_rank_pos[token_idx, expert_idx]
+                r_start = rank_pos * r_per_k
+                r_idx = r_start.unsqueeze(1) + torch.arange(r_per_k, device=A.device)
+                A = A.gather(1, r_idx.unsqueeze(2).expand(-1, -1, A.shape[2]))
+                B = B.gather(1, r_idx.unsqueeze(2).expand(-1, -1, B.shape[2]))
+
+            gated_f = F.dropout(gated_output.to(A.dtype), p=lora_dropout_p, training=self_module.training)
+            delta = einsum(A, gated_f, "n r d_in, n d_in -> n r")
+            delta = einsum(B, delta, "n r d_out, n r -> n d_out")
+            out = out + delta.to(out.dtype) * scaling
+
+        weighted_output = out * routing_weights[token_idx, expert_idx, None]
+        next_states.index_add_(0, token_idx, weighted_output.to(hs_flat.dtype))
+
+    return next_states.view(batch_size, -1, self_module.hidden_size)
+
+
 def moe_lora_forward_packed(
     hidden_states,
     router_indices,

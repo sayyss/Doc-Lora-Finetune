@@ -46,6 +46,7 @@ from ctx_to_lora.modeling.lora_layer import (
     apply_lora_to_layers,
     lora_forward,
     lora_forward_packed,
+    moe_lora_forward,
     moe_lora_forward_packed,
 )
 from ctx_to_lora.modeling.lora_merger import combine_lora
@@ -546,7 +547,7 @@ class ModulatedPretrainedModel(nn.Module):
 
         # Patch MoE expert forwards
         if self.hypernet.moe_target_modules:
-            moe_fn = moe_lora_forward_packed if self.use_sequence_packing else moe_lora_forward_packed
+            moe_fn = moe_lora_forward_packed if self.use_sequence_packing else moe_lora_forward
             for layer_idx in self.hypernet.layer_indices:
                 experts = layers[layer_idx].mlp.experts
                 if not getattr(experts, "moe_patched_forward", False):
