@@ -113,6 +113,7 @@ def moe_lora_forward_packed(
         for k in range(top_k):
             expert_rank_pos.scatter_(1, router_indices[:, k:k+1], k)
 
+    print(f"DEBUG: rw={routing_weights.shape} ri={router_indices.shape} ri_range=[{router_indices.min().item()},{router_indices.max().item()}] hs={hidden_states.shape}")
     with torch.no_grad():
         expert_mask = F.one_hot(router_indices, num_classes=num_experts + 1).permute(2, 1, 0)
         expert_hit = torch.greater(expert_mask.sum(dim=(-1, -2)), 0).nonzero()
