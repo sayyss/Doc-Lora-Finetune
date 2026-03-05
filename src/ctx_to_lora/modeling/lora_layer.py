@@ -97,7 +97,7 @@ def moe_lora_forward_packed(
 
     batch_size = hidden_states.shape[0]
     hs_flat = hidden_states.reshape(-1, self_module.hidden_size)
-    num_experts = routing_weights.shape[1]
+    num_experts = self_module.gate_up_proj.shape[0]
     top_k = router_indices.shape[1]
     next_states = torch.zeros_like(hs_flat)
 
@@ -113,7 +113,6 @@ def moe_lora_forward_packed(
         for k in range(top_k):
             expert_rank_pos.scatter_(1, router_indices[:, k:k+1], k)
 
-    print(f"DEBUG: rw={routing_weights.shape} ri={router_indices.shape} ri_range=[{router_indices.min().item()},{router_indices.max().item()}] hs={hidden_states.shape}")
     with torch.no_grad():
         expert_mask = F.one_hot(router_indices, num_classes=num_experts + 1).permute(2, 1, 0)
         expert_hit = torch.greater(expert_mask.sum(dim=(-1, -2)), 0).nonzero()
@@ -156,7 +155,13 @@ def moe_lora_forward_packed(
             delta = einsum(B, delta, "n r d_out, n r -> n d_out")
             out = out + delta.to(out.dtype) * scaling
 
-        weighted_output = out * routing_weights[token_idx, expert_idx, None]
+        # routing_weights may be [num_tokens, num_experts] or [num_tokens, top_k]
+        if routing_weights.shape[1] == num_experts:
+            expert_weight = routing_weights[token_idx, expert_idx, None]
+        else:
+            top_k_mask = (router_indices[token_idx] == expert_idx)
+            expert_weight = (routing_weights[token_idx] * top_k_mask).sum(dim=-1, keepdim=True)
+        weighted_output = out * expert_weight
         next_states.index_add_(0, token_idx, weighted_output.to(hs_flat.dtype))
 
     return next_states.view(batch_size, -1, self_module.hidden_size)
