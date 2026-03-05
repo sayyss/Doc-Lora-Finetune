@@ -125,7 +125,27 @@ class ModulatedModelTrainer(Trainer):
         model = self.accelerator.unwrap_model(self.model)
         if state_dict is None:
             state_dict = model.state_dict()
-        torch.save(state_dict, os.path.join(output_dir, "pytorch_model.bin"))
+        save_path = os.path.join(output_dir, "pytorch_model.bin")
+        torch.save(state_dict, save_path)
+        logger.info(f"Saved model checkpoint to {save_path}")
+
+    def _save_checkpoint(self, model, trial, metrics=None):
+        # Override to ensure checkpoint saves don't fail silently
+        checkpoint_folder = f"checkpoint-{self.state.global_step}"
+        output_dir = os.path.join(self.args.output_dir, checkpoint_folder)
+        logger.info(f"Saving checkpoint at step {self.state.global_step} to {output_dir}")
+        self.save_model(output_dir, _internal_call=True)
+        # Save trainer state (for resume)
+        try:
+            self.state.save_to_json(os.path.join(output_dir, "trainer_state.json"))
+            # Save optimizer & scheduler for proper resume
+            torch.save(self.optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
+            torch.save(self.lr_scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
+        except Exception as e:
+            logger.warning(f"Failed to save optimizer/scheduler state: {e}")
+        # Manage checkpoint rotation
+        if self.args.save_total_limit is not None:
+            self._rotate_checkpoints(use_mtime=True, output_dir=self.args.output_dir)
 
     # modified from the base Trainer to support per-context average loss
     def get_batch_samples(self, epoch_iterator, num_batches, device):
