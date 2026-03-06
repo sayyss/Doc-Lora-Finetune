@@ -920,7 +920,7 @@ def evaluate(
     # Copy only necessary attributes from training_args to eval_trainer_args
     seq2seq_training_args_fields = {f.name for f in fields(Seq2SeqTrainingArguments)}
     for attr, value in dict(**vars(args)).items():
-        if attr in seq2seq_training_args_fields and not attr.startswith("_"):
+        if attr in seq2seq_training_args_fields and not attr.startswith("_") and value is not None:
             eval_trainer_args[attr] = value
 
     eval_trainer_args["eval_strategy"] = "no"
