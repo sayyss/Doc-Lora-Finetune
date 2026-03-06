@@ -925,7 +925,6 @@ def evaluate(
 
     eval_trainer_args["eval_strategy"] = "no"
     eval_trainer_args["save_strategy"] = "no"
-    eval_trainer_args["overwrite_output_dir"] = True
     eval_trainer_args["batch_eval_metrics"] = True
     eval_trainer_args["per_device_eval_batch_size"] = eval_batch_size
     eval_trainer_args["include_for_metrics"] = ["inputs"]
