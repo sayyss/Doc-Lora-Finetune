@@ -145,7 +145,10 @@ class ModulatedModelTrainer(Trainer):
             logger.warning(f"Failed to save optimizer/scheduler state: {e}")
         # Manage checkpoint rotation
         if self.args.save_total_limit is not None:
-            self._rotate_checkpoints(use_mtime=True, output_dir=self.args.output_dir)
+            try:
+                self._rotate_checkpoints(use_mtime=True, output_dir=self.args.output_dir)
+            except AttributeError:
+                pass  # _rotate_checkpoints removed in newer transformers
 
     # modified from the base Trainer to support per-context average loss
     def get_batch_samples(self, epoch_iterator, num_batches, device):

@@ -1,0 +1,722 @@
+2026-03-06 02:31:31 INFO: Logging to: train_outputs/runs/20260305-070550_OhbVrpoi/eval-results-1500/20260306-023131_c999ea76/debug.log
+2026-03-06 02:31:31 DEBUG: CMD: run_eval.py --checkpoint_path train_outputs/runs/20260305-070550_OhbVrpoi/checkpoint-1500/pytorch_model.bin --eval_batch_size_gen 4
+2026-03-06 02:31:31 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2026-03-06 02:31:31 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/tokenizer_config.json HTTP/1.1" 307 0
+2026-03-06 02:31:31 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/tokenizer_config.json HTTP/1.1" 200 0
+2026-03-06 02:31:31 DEBUG: https://huggingface.co:443 "GET /api/models/openai/gpt-oss-20b/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2026-03-06 02:31:31 INFO: Using chat template from chat_templates/openai/gpt-oss-20b.jinja
+2026-03-06 02:31:32 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/config.json HTTP/1.1" 307 0
+2026-03-06 02:31:32 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json HTTP/1.1" 200 0
+2026-03-06 02:31:32 INFO: MXFP4 model detected. Dequantizing to bf16.
+2026-03-06 02:31:32 DEBUG: Model init kwargs: {'pretrained_model_name_or_path': 'openai/gpt-oss-20b', 'device_map': 'cuda', 'torch_dtype': torch.bfloat16, 'trust_remote_code': True, 'attn_implementation': 'eager', 'use_cache': False, 'quantization_config': Mxfp4Config(quant_method=<QuantizationMethod.MXFP4: 'mxfp4'>)}
+2026-03-06 02:31:32 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/config.json HTTP/1.1" 307 0
+2026-03-06 02:31:32 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json HTTP/1.1" 200 0
+2026-03-06 02:31:33 DEBUG: Loading bitsandbytes native library from: /workspace/Doc-Lora-Finetune/.venv/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda128.so
+2026-03-06 02:31:35 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/generation_config.json HTTP/1.1" 307 0
+2026-03-06 02:31:35 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json HTTP/1.1" 200 0
+2026-03-06 02:31:35 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2026-03-06 02:31:35 DEBUG: HyperLoRA config: HypernetConfig(latent_size=512, use_light_weight_lora=False, light_weight_latent_size=128, per_rank_gen=True, use_per_rank_bias=False, use_bias=True, per_layer_processing=True, use_token_mixing=False, num_pre_head_layers=1, dropout_rate=0.0, lora_config=LoraConfig(task_type='CAUSAL_LM', peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, peft_version='0.18.1', base_model_name_or_path='openai/gpt-oss-20b', revision=None, inference_mode=False, r=8, target_modules={'v_proj', 'q_proj', 'k_proj', 'o_proj'}, exclude_modules=None, lora_alpha=45.254833995939045, lora_dropout=0.0, fan_in_fan_out=False, bias='none', use_rslora=False, modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None, rank_pattern={}, alpha_pattern={}, megatron_config=None, megatron_core='megatron.core', trainable_token_indices=None, loftq_config={}, eva_config=None, corda_config=None, use_dora=False, alora_invocation_tokens=None, use_qalora=False, qalora_group_size=16, layer_replication=None, runtime_config=LoraRuntimeConfig(ephemeral_gpu_offload=False), lora_bias=False, target_parameters=None, arrow_config=None, ensure_weight_tying=False), extra_modules=None, base_hidden_size=2880, layer_indices=tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
+        18, 19, 20, 21, 22, 23], device='cuda:0'), feature_sizes=({'q_proj': 2880, 'k_proj': 2880, 'v_proj': 2880, 'o_proj': 4096, 'down_proj': 2880}, {'q_proj': 4096, 'k_proj': 512, 'v_proj': 512, 'o_proj': 2880, 'down_proj': 2880}), aggregator_config=AggregatorConfig(aggregator_type='perceiver', num_layers=24, num_modules=5, num_extra_modules=0, output_size=512, feature_size=2880, pooling_type='mean', num_latent_factor=8, lora_r=8, per_rank_gen=True, n_latent_queries=8, num_blocks=9, num_self_attn_per_block=0, shared_weights=False, layer_to_layer_ctx_encoder=True), moe_target_modules=['down_proj'], moe_lora_strategy='shared')
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:31:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:31:37 DEBUG: ctx_model_name: openai/gpt-oss-20b
+2026-03-06 02:31:37 DEBUG: base_model.config._attn_implementation: eager
+2026-03-06 02:31:37 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/config.json HTTP/1.1" 307 0
+2026-03-06 02:31:37 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json HTTP/1.1" 200 0
+2026-03-06 02:31:37 INFO: MXFP4 model detected. Dequantizing to bf16.
+2026-03-06 02:31:37 DEBUG: Model init kwargs: {'pretrained_model_name_or_path': 'openai/gpt-oss-20b', 'device_map': 'cuda', 'torch_dtype': torch.bfloat16, 'trust_remote_code': True, 'attn_implementation': 'eager', 'use_cache': False, 'quantization_config': Mxfp4Config(quant_method=<QuantizationMethod.MXFP4: 'mxfp4'>)}
+2026-03-06 02:31:37 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/config.json HTTP/1.1" 307 0
+2026-03-06 02:31:37 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json HTTP/1.1" 200 0
+2026-03-06 02:31:39 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/generation_config.json HTTP/1.1" 307 0
+2026-03-06 02:31:39 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json HTTP/1.1" 200 0
+2026-03-06 02:31:39 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2026-03-06 02:31:39 DEBUG: peft_weights: {'v_proj': {'lora_dropout': Identity(), 'lora_A': Linear(in_features=2880, out_features=8, bias=False), 'lora_B': Linear(in_features=8, out_features=512, bias=False)}, 'q_proj': {'lora_dropout': Identity(), 'lora_A': Linear(in_features=2880, out_features=8, bias=False), 'lora_B': Linear(in_features=8, out_features=4096, bias=False)}, 'k_proj': {'lora_dropout': Identity(), 'lora_A': Linear(in_features=2880, out_features=8, bias=False), 'lora_B': Linear(in_features=8, out_features=512, bias=False)}, 'o_proj': {'lora_dropout': Identity(), 'lora_A': Linear(in_features=4096, out_features=8, bias=False), 'lora_B': Linear(in_features=8, out_features=2880, bias=False)}}
+2026-03-06 02:31:39 DEBUG: HyperLoRA config: HypernetConfig(latent_size=512, use_light_weight_lora=False, light_weight_latent_size=128, per_rank_gen=True, use_per_rank_bias=False, use_bias=True, per_layer_processing=True, use_token_mixing=False, num_pre_head_layers=1, dropout_rate=0.0, lora_config=LoraConfig(task_type='CAUSAL_LM', peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, peft_version='0.18.1', base_model_name_or_path='openai/gpt-oss-20b', revision=None, inference_mode=False, r=8, target_modules={'v_proj', 'q_proj', 'k_proj', 'o_proj'}, exclude_modules=None, lora_alpha=45.254833995939045, lora_dropout=0.0, fan_in_fan_out=False, bias='none', use_rslora=False, modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None, rank_pattern={}, alpha_pattern={}, megatron_config=None, megatron_core='megatron.core', trainable_token_indices=None, loftq_config={}, eva_config=None, corda_config=None, use_dora=False, alora_invocation_tokens=None, use_qalora=False, qalora_group_size=16, layer_replication=None, runtime_config=LoraRuntimeConfig(ephemeral_gpu_offload=False), lora_bias=False, target_parameters=None, arrow_config=None, ensure_weight_tying=False), extra_modules=None, base_hidden_size=2880, layer_indices=tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
+        18, 19, 20, 21, 22, 23], device='cuda:0'), feature_sizes=({'q_proj': 2880, 'k_proj': 2880, 'v_proj': 2880, 'o_proj': 4096, 'down_proj': 2880}, {'q_proj': 4096, 'k_proj': 512, 'v_proj': 512, 'o_proj': 2880, 'down_proj': 2880}), aggregator_config=AggregatorConfig(aggregator_type='perceiver', num_layers=24, num_modules=5, num_extra_modules=0, output_size=512, feature_size=2880, pooling_type='mean', num_latent_factor=8, lora_r=8, per_rank_gen=True, n_latent_queries=8, num_blocks=9, num_self_attn_per_block=0, shared_weights=False, layer_to_layer_ctx_encoder=True), moe_target_modules=['down_proj'], moe_lora_strategy='shared')
+2026-03-06 02:31:41 DEBUG: ctx_model_name: openai/gpt-oss-20b
+2026-03-06 02:31:41 DEBUG: base_model.config._attn_implementation: eager
+2026-03-06 02:31:41 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/config.json HTTP/1.1" 307 0
+2026-03-06 02:31:41 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json HTTP/1.1" 200 0
+2026-03-06 02:31:41 INFO: MXFP4 model detected. Dequantizing to bf16.
+2026-03-06 02:31:41 DEBUG: Model init kwargs: {'pretrained_model_name_or_path': 'openai/gpt-oss-20b', 'device_map': 'cuda', 'torch_dtype': torch.bfloat16, 'trust_remote_code': True, 'attn_implementation': 'eager', 'use_cache': False, 'quantization_config': Mxfp4Config(quant_method=<QuantizationMethod.MXFP4: 'mxfp4'>)}
+2026-03-06 02:31:41 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/config.json HTTP/1.1" 307 0
+2026-03-06 02:31:41 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json HTTP/1.1" 200 0
+2026-03-06 02:31:42 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/generation_config.json HTTP/1.1" 307 0
+2026-03-06 02:31:42 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json HTTP/1.1" 200 0
+2026-03-06 02:31:42 DEBUG: https://huggingface.co:443 "HEAD /openai/gpt-oss-20b/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2026-03-06 02:31:42 INFO: load result: <All keys matched successfully>
+2026-03-06 02:31:42 INFO: Loading dataset squad with split validation...
+2026-03-06 02:31:42 DEBUG: Tokenizing dataset with kwargs: {"ds_name": "squad", "split": "validation", "add_negative_prompt": false, "max_qas_len": -1, "max_qas_per_sample": 1, "base_model_max_len": 131072, "ctx_model_max_len": 131072, "add_ctx_to_chat": false, "max_ctx_chunk_len": -1, "min_ctx_chunk_len": -1, "num_chunk_probs": null, "max_ctx_chunk_num": null, "need_ctx_ids": true, "max_new_tokens": 256, "set_format": "pt"}openai/gpt-oss-20bopenai/gpt-oss-20b
+2026-03-06 02:31:42 DEBUG: Dataset hash: 20cb3957ea2ae4b2fed9f8272f5bfe8aae7b79a3524d0c9348bc6974acd6a84d
+2026-03-06 02:31:42 INFO: Loading dataset squad with split validation...
+2026-03-06 02:31:43 DEBUG: Attempting to acquire lock 123575260991248 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_squad_default_0.0.0_43a9884d1bd7278b.lock
+2026-03-06 02:31:43 DEBUG: Lock 123575260991248 acquired on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_squad_default_0.0.0_43a9884d1bd7278b.lock
+2026-03-06 02:31:43 DEBUG: open file: /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b/dataset_info.json
+2026-03-06 02:31:43 DEBUG: Attempting to release lock 123575260991248 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_squad_default_0.0.0_43a9884d1bd7278b.lock
+2026-03-06 02:31:43 DEBUG: Lock 123575260991248 released on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_squad_default_0.0.0_43a9884d1bd7278b.lock
+2026-03-06 02:31:43 DEBUG: Attempting to acquire lock 123575242411088 on /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b_builder.lock
+2026-03-06 02:31:43 DEBUG: Lock 123575242411088 acquired on /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b_builder.lock
+2026-03-06 02:31:43 DEBUG: open file: /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b/dataset_info.json
+2026-03-06 02:31:43 DEBUG: Attempting to release lock 123575242411088 on /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b_builder.lock
+2026-03-06 02:31:43 DEBUG: Lock 123575242411088 released on /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b_builder.lock
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpane7wmen
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpqk28q2rw
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpzkwb1sk3
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp7as7uujd
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpuk2xdfwy
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpz7smgn7f
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpu3px9ib8
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpoci0a203
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp3h_n8n64
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpcunpq1p6
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmptrm5pq_p
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpcjpkmawa
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpa6bcievr
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpde6bo92x
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp3ywk2l4j
+2026-03-06 02:31:43 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpe3r1z_ax
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp6wc_uh8j
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpy79wy5s3
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmptd5bbxb5
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmphsh6mcm1
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpjfpg306n
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8n01ofkb
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpq1dxirlk
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpt1xrfni1
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpve8xfqo9
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpzgbr843n
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpst2qy7ql
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpql7mshlz
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmx4ipjxz
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpe9h9vkei
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpj5ysheio
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp6ypl8lf0
+2026-03-06 02:31:44 INFO: Constructing and tokenizing squad with validation split...
+2026-03-06 02:31:44 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmplc1etguy
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpf5ew2h36
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpntx0f6kj
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpvherl17p
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp5_5s3doa
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpw88xu3ss
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpl53ft4hj
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpjwgsrfuv
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp14f_597b
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpsc9r25mq
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpxdnoe6fh
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmplelq4elr
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmprah8a721
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpdszzupw5
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpngj88zx3
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpzjeca0ip
+2026-03-06 02:31:45 DEBUG: Tokenizing inputs
+2026-03-06 02:31:45 INFO: Tokenizing 1000 messages...
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpe9g_vpi3
+2026-03-06 02:31:45 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpcxub6rc4
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp_uijckbf
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpfpag4qgr
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp_zzhk03y
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmps5479_7n
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpuze8uqy6
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmppv9fl_j6
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp9u9v_aux
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpo7p6yb9k
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmphqhxov4h
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpa7nv4idm
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpbaf6wzuc
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp5cxcd15n
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp7h60lhrx
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp5_xhxsh0
+2026-03-06 02:31:45 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpm1bsxs08
+2026-03-06 02:31:46 DEBUG: Tokenizing context
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp_ev0_fn8
+2026-03-06 02:31:46 INFO: Chunking context with split_ctx_kwargs={'max_chunk_len': -1, 'min_chunk_len': -1, 'num_chunk_probs': None, 'max_num_split': None, 'model_name_or_path': 'openai/gpt-oss-20b', 'is_train': False}
+2026-03-06 02:31:46 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpars2dg_4
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpw8wedkir
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpia_icw81
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpuiiby1ow
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp6mw8834w
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpswfo32lq
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmptxtqm55y
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmbcsf2pb
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpafs6izgu
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp0tnxk8r7
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp32md4yps
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpexk81hz9
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpyb41gzq0
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp89qf8g3u
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpd21kqbhc
+2026-03-06 02:31:46 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmphupebnxv
+2026-03-06 02:31:47 INFO: Num samples after ctx chunking: 1000
+2026-03-06 02:31:47 INFO: Avg. num chunks per ctx: 1.0
+2026-03-06 02:31:47 INFO: Split too long QAs with split_qa_kwargs={'max_qas_len': -1, 'max_qas_per_sample': 1}
+2026-03-06 02:31:47 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 128
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 128
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpig0drfri
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 115
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 115
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 114
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 114
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp7lhaow0i
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 114
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 114
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 120
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 120
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpy9k0dz09
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpuz6csell
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp97g45out
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 113
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 113
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 117
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 117
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpz05pm60m
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 120
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 120
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpx7za01t6
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 131
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 127
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 131
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 127
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 129
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpiw_boah9
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 123
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 129
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 123
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 116
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpf8kfrpd9
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 116
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpsh38ebnz
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpkvay8e93
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmnex72__
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 117
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp004ekawh
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 117
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 117
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 117
+2026-03-06 02:31:47 DEBUG: Longest old qas len: 116
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpdxho3b0a
+2026-03-06 02:31:47 DEBUG: Longest new qas len: 116
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmptsgzbhns
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpoy6zfi7r
+2026-03-06 02:31:47 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8dswm79a
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpchk_pu4k
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpc_w9i4o4
+2026-03-06 02:31:47 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpx9e9j3qu
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpddrqaw2v
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpj0c7djez
+2026-03-06 02:31:48 DEBUG: Attempting to acquire lock 123575260821904 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_squad_default_0.0.0_43a9884d1bd7278b.lock
+2026-03-06 02:31:48 DEBUG: Lock 123575260821904 acquired on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_squad_default_0.0.0_43a9884d1bd7278b.lock
+2026-03-06 02:31:48 DEBUG: open file: /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b/dataset_info.json
+2026-03-06 02:31:48 DEBUG: Attempting to release lock 123575260821904 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_squad_default_0.0.0_43a9884d1bd7278b.lock
+2026-03-06 02:31:48 DEBUG: Lock 123575260821904 released on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_squad_default_0.0.0_43a9884d1bd7278b.lock
+2026-03-06 02:31:48 DEBUG: Attempting to acquire lock 123575287661712 on /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b_builder.lock
+2026-03-06 02:31:48 DEBUG: Lock 123575287661712 acquired on /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b_builder.lock
+2026-03-06 02:31:48 DEBUG: open file: /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b/dataset_info.json
+2026-03-06 02:31:48 DEBUG: Attempting to release lock 123575287661712 on /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b_builder.lock
+2026-03-06 02:31:48 DEBUG: Lock 123575287661712 released on /root/.cache/huggingface/datasets/squad/default/0.0.0/43a9884d1bd7278b_builder.lock
+2026-03-06 02:31:48 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpovwwltso
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp3r41yiez
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpgw_d095a
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpys1i4qrz
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpbccksq0y
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmprrak7rr_
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpyk0q6alx
+2026-03-06 02:31:48 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpnybu31ff
+2026-03-06 02:31:49 INFO: Loading dataset drop with split validation...
+2026-03-06 02:31:49 DEBUG: Tokenizing dataset with kwargs: {"ds_name": "drop", "split": "validation", "add_negative_prompt": false, "max_qas_len": -1, "max_qas_per_sample": 1, "base_model_max_len": 131072, "ctx_model_max_len": 131072, "add_ctx_to_chat": false, "max_ctx_chunk_len": -1, "min_ctx_chunk_len": -1, "num_chunk_probs": null, "max_ctx_chunk_num": null, "need_ctx_ids": true, "max_new_tokens": 256, "set_format": "pt"}openai/gpt-oss-20bopenai/gpt-oss-20b
+2026-03-06 02:31:49 DEBUG: Dataset hash: 805773b0d824f2b2e80333998c3a404b0af28940394116a879a1dbba389baef1
+2026-03-06 02:31:49 INFO: Loading dataset drop with split validation...
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "HEAD /datasets/ucinlp/drop/resolve/main/README.md HTTP/1.1" 307 0
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/datasets/ucinlp/drop/95cda593fae71b60b5b19f82de3fcf3298c1239c/README.md HTTP/1.1" 200 0
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "HEAD /datasets/ucinlp/drop/resolve/95cda593fae71b60b5b19f82de3fcf3298c1239c/drop.py HTTP/1.1" 404 0
+2026-03-06 02:31:49 DEBUG: Starting new HTTPS connection (1): s3.amazonaws.com:443
+2026-03-06 02:31:49 DEBUG: https://s3.amazonaws.com:443 "HEAD /datasets.huggingface.co/datasets/datasets/ucinlp/drop/ucinlp/drop.py HTTP/1.1" 404 0
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "GET /api/datasets/ucinlp/drop/revision/95cda593fae71b60b5b19f82de3fcf3298c1239c HTTP/1.1" 200 None
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "HEAD /datasets/ucinlp/drop/resolve/95cda593fae71b60b5b19f82de3fcf3298c1239c/.huggingface.yaml HTTP/1.1" 404 0
+2026-03-06 02:31:49 DEBUG: Starting new HTTPS connection (1): datasets-server.huggingface.co:443
+2026-03-06 02:31:49 DEBUG: https://datasets-server.huggingface.co:443 "GET /info?dataset=ucinlp/drop HTTP/1.1" 200 None
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "GET /api/datasets/ucinlp/drop/revision/95cda593fae71b60b5b19f82de3fcf3298c1239c HTTP/1.1" 200 None
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "GET /api/datasets/ucinlp/drop/tree/95cda593fae71b60b5b19f82de3fcf3298c1239c/data?recursive=True&expand=False HTTP/1.1" 200 636
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "GET /api/datasets/ucinlp/drop/tree/95cda593fae71b60b5b19f82de3fcf3298c1239c?recursive=False&expand=False HTTP/1.1" 200 291
+2026-03-06 02:31:49 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "GET /api/datasets/ucinlp/drop/revision/95cda593fae71b60b5b19f82de3fcf3298c1239c HTTP/1.1" 200 None
+2026-03-06 02:31:49 DEBUG: https://huggingface.co:443 "HEAD /datasets/ucinlp/drop/resolve/95cda593fae71b60b5b19f82de3fcf3298c1239c/dataset_infos.json HTTP/1.1" 404 0
+2026-03-06 02:31:49 DEBUG: Attempting to acquire lock 123575240778576 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_ucinlp___drop_default_0.0.0_95cda593fae71b60b5b19f82de3fcf3298c1239c.lock
+2026-03-06 02:31:49 DEBUG: Lock 123575240778576 acquired on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_ucinlp___drop_default_0.0.0_95cda593fae71b60b5b19f82de3fcf3298c1239c.lock
+2026-03-06 02:31:49 DEBUG: open file: /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c/dataset_info.json
+2026-03-06 02:31:49 DEBUG: Attempting to release lock 123575240778576 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_ucinlp___drop_default_0.0.0_95cda593fae71b60b5b19f82de3fcf3298c1239c.lock
+2026-03-06 02:31:49 DEBUG: Lock 123575240778576 released on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_ucinlp___drop_default_0.0.0_95cda593fae71b60b5b19f82de3fcf3298c1239c.lock
+2026-03-06 02:31:49 DEBUG: Attempting to acquire lock 123575262422032 on /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c_builder.lock
+2026-03-06 02:31:49 DEBUG: Lock 123575262422032 acquired on /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c_builder.lock
+2026-03-06 02:31:49 DEBUG: open file: /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c/dataset_info.json
+2026-03-06 02:31:49 DEBUG: Attempting to release lock 123575262422032 on /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c_builder.lock
+2026-03-06 02:31:49 DEBUG: Lock 123575262422032 released on /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c_builder.lock
+2026-03-06 02:31:49 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp6y2s9by6
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpl2cqvpib
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpn0jevts9
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpolrr6w78
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8xd8qtzg
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpzmdv6m_b
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp22mf8_5a
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp0hzbp8qn
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpilsa861m
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpzjknkbcx
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp_yaz75nj
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpqtigppnp
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp973rnyuv
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp403zjznu
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpn2d8j54n
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpyauyvsnp
+2026-03-06 02:31:50 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpm72vlj_t
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpbexj1rbd
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmppsjnjsyn
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp6pb8ntyy
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpetgv8ap_
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpfuerrtyf
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp1dppvrnf
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmprjwr30jd
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpglgkkdq0
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpovy67t2d
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp_34ns8ov
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpy45s3uhy
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpo_e41suo
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmr75nczu
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpe1l4yufu
+2026-03-06 02:31:50 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpd74s_1fr
+2026-03-06 02:31:51 INFO: Constructing and tokenizing drop with validation split...
+2026-03-06 02:31:51 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmjewmvtc
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp64ncppxu
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpfl_igzi5
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp9dl0kpsa
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpfnafpg8q
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpjo4ir5jc
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpl47i56bj
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp0jh2o1kx
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpxwkvd37j
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpkphh6znc
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpkuokon31
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmptuzlsmpg
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpap28d3ds
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpfu8j7vcx
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmped9bj3ka
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8d6s5wrd
+2026-03-06 02:31:51 DEBUG: Tokenizing inputs
+2026-03-06 02:31:51 INFO: Tokenizing 900 messages...
+2026-03-06 02:31:51 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpm5urk4ez
+2026-03-06 02:31:51 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmptx6d_prm
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpql409wzk
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpijpcf24c
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpsm7ndght
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpxgcgfnhg
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpm0pbimov
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpv_3dv20e
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmptu6k8lc6
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp3enpd72f
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmscvs0tz
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmplhu9w9fi
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp51alin2_
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpvv02ddm4
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpvhgj8q7d
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpbj5_putq
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpecq_drj_
+2026-03-06 02:31:52 DEBUG: Tokenizing context
+2026-03-06 02:31:52 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8foebhs2
+2026-03-06 02:31:52 INFO: Chunking context with split_ctx_kwargs={'max_chunk_len': -1, 'min_chunk_len': -1, 'num_chunk_probs': None, 'max_num_split': None, 'model_name_or_path': 'openai/gpt-oss-20b', 'is_train': False}
+2026-03-06 02:31:52 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpav6l87g3
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpurc4f1pr
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpiz3se4un
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmptw8ruhlp
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpkcbjf241
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpgzj1eea_
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpigdvfidj
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpb75mjsov
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp3oocpbit
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpvptpo7ro
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmppibzfl9h
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpyjmuh2uj
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpiy5u72jj
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpdk1_fv1y
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpfr634boh
+2026-03-06 02:31:53 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmping_7ntp
+2026-03-06 02:31:53 INFO: Num samples after ctx chunking: 900
+2026-03-06 02:31:53 INFO: Avg. num chunks per ctx: 1.0
+2026-03-06 02:31:53 INFO: Split too long QAs with split_qa_kwargs={'max_qas_len': -1, 'max_qas_per_sample': 1}
+2026-03-06 02:31:53 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 125
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 125
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 127
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 120
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 127
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpuc7guvhv
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 120
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 114
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 114
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 112
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 112
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpm4uebmr7
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp13vcw2fh
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 122
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp89swnj2b
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 126
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpjl7z80wm
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 122
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 139
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 119
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 126
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 139
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 119
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp_t1m3exz
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 118
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpu6z9un7c
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 118
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp13gre2ys
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmbuckw01
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 117
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 117
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpgyu_q_bb
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 135
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 135
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpildc5168
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 131
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpaz56axxo
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 131
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 115
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 110
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 115
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 110
+2026-03-06 02:31:54 DEBUG: Longest old qas len: 118
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp3mnmsbfv
+2026-03-06 02:31:54 DEBUG: Longest new qas len: 118
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp43bq7_4r
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpy4y5x42v
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpd0rwcczg
+2026-03-06 02:31:54 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpya2oyyrz
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp096gd2sg
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp7oambu5k
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpv4lgw4_q
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpn3uk5se_
+2026-03-06 02:31:54 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp4ewz8pea
+2026-03-06 02:31:54 DEBUG: https://huggingface.co:443 "HEAD /datasets/ucinlp/drop/resolve/main/README.md HTTP/1.1" 307 0
+2026-03-06 02:31:54 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/datasets/ucinlp/drop/95cda593fae71b60b5b19f82de3fcf3298c1239c/README.md HTTP/1.1" 200 0
+2026-03-06 02:31:54 DEBUG: https://huggingface.co:443 "HEAD /datasets/ucinlp/drop/resolve/95cda593fae71b60b5b19f82de3fcf3298c1239c/drop.py HTTP/1.1" 404 0
+2026-03-06 02:31:54 DEBUG: https://s3.amazonaws.com:443 "HEAD /datasets.huggingface.co/datasets/datasets/ucinlp/drop/ucinlp/drop.py HTTP/1.1" 404 0
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "HEAD /datasets/ucinlp/drop/resolve/95cda593fae71b60b5b19f82de3fcf3298c1239c/.huggingface.yaml HTTP/1.1" 404 0
+2026-03-06 02:31:55 DEBUG: https://datasets-server.huggingface.co:443 "GET /info?dataset=ucinlp/drop HTTP/1.1" 200 None
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "HEAD /datasets/ucinlp/drop/resolve/95cda593fae71b60b5b19f82de3fcf3298c1239c/dataset_infos.json HTTP/1.1" 404 0
+2026-03-06 02:31:55 DEBUG: Attempting to acquire lock 123575260764944 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_ucinlp___drop_default_0.0.0_95cda593fae71b60b5b19f82de3fcf3298c1239c.lock
+2026-03-06 02:31:55 DEBUG: Lock 123575260764944 acquired on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_ucinlp___drop_default_0.0.0_95cda593fae71b60b5b19f82de3fcf3298c1239c.lock
+2026-03-06 02:31:55 DEBUG: open file: /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c/dataset_info.json
+2026-03-06 02:31:55 DEBUG: Attempting to release lock 123575260764944 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_ucinlp___drop_default_0.0.0_95cda593fae71b60b5b19f82de3fcf3298c1239c.lock
+2026-03-06 02:31:55 DEBUG: Lock 123575260764944 released on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_ucinlp___drop_default_0.0.0_95cda593fae71b60b5b19f82de3fcf3298c1239c.lock
+2026-03-06 02:31:55 DEBUG: Attempting to acquire lock 123585241831312 on /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c_builder.lock
+2026-03-06 02:31:55 DEBUG: Lock 123585241831312 acquired on /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c_builder.lock
+2026-03-06 02:31:55 DEBUG: open file: /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c/dataset_info.json
+2026-03-06 02:31:55 DEBUG: Attempting to release lock 123585241831312 on /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c_builder.lock
+2026-03-06 02:31:55 DEBUG: Lock 123585241831312 released on /root/.cache/huggingface/datasets/ucinlp___drop/default/0.0.0/95cda593fae71b60b5b19f82de3fcf3298c1239c_builder.lock
+2026-03-06 02:31:55 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:55 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmvdej7ib
+2026-03-06 02:31:55 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmplmp_fdfq
+2026-03-06 02:31:55 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpdvjbta5j
+2026-03-06 02:31:55 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpzhn0nocz
+2026-03-06 02:31:55 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpo8tg9nzp
+2026-03-06 02:31:55 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp33ju2lap
+2026-03-06 02:31:55 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8jr8ndx8
+2026-03-06 02:31:55 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp83i4gdsz
+2026-03-06 02:31:55 INFO: Loading dataset ropes with split validation...
+2026-03-06 02:31:55 DEBUG: Tokenizing dataset with kwargs: {"ds_name": "ropes", "split": "validation", "add_negative_prompt": false, "max_qas_len": -1, "max_qas_per_sample": 1, "base_model_max_len": 131072, "ctx_model_max_len": 131072, "add_ctx_to_chat": false, "max_ctx_chunk_len": -1, "min_ctx_chunk_len": -1, "num_chunk_probs": null, "max_ctx_chunk_num": null, "need_ctx_ids": true, "max_new_tokens": 256, "set_format": "pt"}openai/gpt-oss-20bopenai/gpt-oss-20b
+2026-03-06 02:31:55 DEBUG: Dataset hash: 2e5200c5a31ccd328eb2cff7b14f08dfe5e73fb29a2a57f1ac81b74107eddefb
+2026-03-06 02:31:55 INFO: Loading dataset ropes with split validation...
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "HEAD /datasets/allenai/ropes/resolve/main/README.md HTTP/1.1" 307 0
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "HEAD /api/resolve-cache/datasets/allenai/ropes/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd/README.md HTTP/1.1" 200 0
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "HEAD /datasets/allenai/ropes/resolve/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd/ropes.py HTTP/1.1" 404 0
+2026-03-06 02:31:55 DEBUG: https://s3.amazonaws.com:443 "HEAD /datasets.huggingface.co/datasets/datasets/allenai/ropes/allenai/ropes.py HTTP/1.1" 404 0
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "GET /api/datasets/allenai/ropes/revision/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd HTTP/1.1" 200 None
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "HEAD /datasets/allenai/ropes/resolve/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd/.huggingface.yaml HTTP/1.1" 404 0
+2026-03-06 02:31:55 DEBUG: https://datasets-server.huggingface.co:443 "GET /info?dataset=allenai/ropes HTTP/1.1" 200 None
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "GET /api/datasets/allenai/ropes/revision/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd HTTP/1.1" 200 None
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "GET /api/datasets/allenai/ropes/tree/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd/plain_text?recursive=True&expand=False HTTP/1.1" 200 961
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "GET /api/datasets/allenai/ropes/tree/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd?recursive=False&expand=False HTTP/1.1" 200 297
+2026-03-06 02:31:55 DEBUG: Starting new HTTPS connection (1): huggingface.co:443
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "GET /api/datasets/allenai/ropes/revision/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd HTTP/1.1" 200 None
+2026-03-06 02:31:55 DEBUG: https://huggingface.co:443 "HEAD /datasets/allenai/ropes/resolve/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd/dataset_infos.json HTTP/1.1" 404 0
+2026-03-06 02:31:55 DEBUG: Attempting to acquire lock 123575261945040 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_allenai___ropes_plain_text_0.0.0_d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd.lock
+2026-03-06 02:31:55 DEBUG: Lock 123575261945040 acquired on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_allenai___ropes_plain_text_0.0.0_d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd.lock
+2026-03-06 02:31:55 DEBUG: open file: /root/.cache/huggingface/datasets/allenai___ropes/plain_text/0.0.0/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd/dataset_info.json
+2026-03-06 02:31:55 DEBUG: Attempting to release lock 123575261945040 on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_allenai___ropes_plain_text_0.0.0_d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd.lock
+2026-03-06 02:31:55 DEBUG: Lock 123575261945040 released on /root/.cache/huggingface/datasets/_root_.cache_huggingface_datasets_allenai___ropes_plain_text_0.0.0_d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd.lock
+2026-03-06 02:31:55 DEBUG: Attempting to acquire lock 123591654266448 on /root/.cache/huggingface/datasets/allenai___ropes/plain_text/0.0.0/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd_builder.lock
+2026-03-06 02:31:55 DEBUG: Lock 123591654266448 acquired on /root/.cache/huggingface/datasets/allenai___ropes/plain_text/0.0.0/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd_builder.lock
+2026-03-06 02:31:55 DEBUG: open file: /root/.cache/huggingface/datasets/allenai___ropes/plain_text/0.0.0/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd/dataset_info.json
+2026-03-06 02:31:55 DEBUG: Attempting to release lock 123591654266448 on /root/.cache/huggingface/datasets/allenai___ropes/plain_text/0.0.0/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd_builder.lock
+2026-03-06 02:31:55 DEBUG: Lock 123591654266448 released on /root/.cache/huggingface/datasets/allenai___ropes/plain_text/0.0.0/d59f1e2ee2b423d7c6ba71edd47fceb4158b07dd_builder.lock
+2026-03-06 02:31:55 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp3k8wa8uy
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp0zxo_yv3
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8ngojdkd
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp3difflps
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp97p_vonc
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpwmimceq5
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpwf8w4s09
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpagoxquyn
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp5vyc65hf
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp01324uf2
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp00dc05nu
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpfxff1j63
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpds5r8rq5
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp08w548ui
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpe85rxyrh
+2026-03-06 02:31:56 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp25ck19ys
+2026-03-06 02:31:56 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp4yxem3or
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp6ttv_p1m
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp850y3vpp
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpy4x9rf2v
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpqvic5cl3
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmptkm4qggv
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpjzvu9eb5
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp_sf4nies
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp4affce_v
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpabmwmqbi
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpxktxd1o0
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpgu1yg6u8
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpntfpvhi0
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp56_n6yfj
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpu5m3at9a
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpu7y7q4_i
+2026-03-06 02:31:57 INFO: Constructing and tokenizing ropes with validation split...
+2026-03-06 02:31:57 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpdzmlqokj
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpz_7z12n0
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpuj5d69wg
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmps8kc7czj
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpk3pap9_l
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpu4dbv2l0
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmplixohasy
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpbpb91sih
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpr5v2c_kl
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp68j0uan5
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpdhf8cosf
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpik9yfp3j
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp2aw7s7hi
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpb81zkz60
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpz8yhib9u
+2026-03-06 02:31:57 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp5wsxzq7w
+2026-03-06 02:31:57 DEBUG: Tokenizing inputs
+2026-03-06 02:31:58 INFO: Tokenizing 900 messages...
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpxl6pxw7v
+2026-03-06 02:31:58 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp7w8j05p8
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp28n6tq3k
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpwpz7w6ji
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpivboe9m1
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpkhk0sx5f
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpvz43vlpq
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpaslq1rjr
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp4w82ovsi
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8kzku4w4
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpc7n6uq4o
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpnf_t2op2
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpvm5_n8rh
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp6ub7xm8z
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpw6y4eeyu
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpbwv38et4
+2026-03-06 02:31:58 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp_lot3w6c
+2026-03-06 02:31:58 DEBUG: Tokenizing context
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp47wx_fph
+2026-03-06 02:31:59 INFO: Chunking context with split_ctx_kwargs={'max_chunk_len': -1, 'min_chunk_len': -1, 'num_chunk_probs': None, 'max_num_split': None, 'model_name_or_path': 'openai/gpt-oss-20b', 'is_train': False}
+2026-03-06 02:31:59 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp4g5dl8v4
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8kj0rs0r
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpfpho2vpc
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp2pqfcqiv
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmps9dafi8q
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpq6vstvlr
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpy3myr_g_
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpw558ek52
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpy_nlqztg
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpkm4kljew
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp27p_wg3p
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpcguzeu8i
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp5oqd9b9c
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp83i1jnn7
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpotsyj1_e
+2026-03-06 02:31:59 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpryyj7n35
+2026-03-06 02:31:59 INFO: Num samples after ctx chunking: 900
+2026-03-06 02:31:59 INFO: Avg. num chunks per ctx: 1.0
+2026-03-06 02:31:59 INFO: Split too long QAs with split_qa_kwargs={'max_qas_len': -1, 'max_qas_per_sample': 1}
+2026-03-06 02:31:59 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 112
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 112
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpwybyb3q9
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 109
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 109
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 113
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp6rvpcrbr
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 114
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 113
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 114
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 109
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp8ypm3onj
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 109
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmxbe3mhs
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 112
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 116
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 112
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpu570lptl
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 116
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 113
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 127
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 113
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 127
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpmcwx354t
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp2xvf8he3
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 110
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 110
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp981ntnkr
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpdtbx5fzd
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 109
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 109
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpwv5obcnr
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 110
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 110
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 110
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 110
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 110
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp0v6c1zg1
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 110
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpi525s2t7
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpjc4v8jge
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp338hym3m
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 109
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 109
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp6kxkd950
+2026-03-06 02:32:00 DEBUG: Longest old qas len: 109
+2026-03-06 02:32:00 DEBUG: Longest new qas len: 109
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpm9jerk36
+2026-03-06 02:32:00 WARNING: Setting TOKENIZERS_PARALLELISM=false for forked processes.
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpzr0ggu3q
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpllh18ksp
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmp98098051
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpam86wcxa
+2026-03-06 02:32:00 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmpxtz4adwf
+2026-03-06 02:32:01 DEBUG: open file: /tmp/hf_datasets-bmzoo2im/tmplksozwq2
+2026-03-06 02:32:01 INFO: x86_64-linux-gnu-gcc -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -fPIC -c /tmp/tmpkh_lm3ub/test.c -o /tmp/tmpkh_lm3ub/test.o
+2026-03-06 02:32:01 INFO: x86_64-linux-gnu-gcc /tmp/tmpkh_lm3ub/test.o -laio -o /tmp/tmpkh_lm3ub/a.out
+2026-03-06 02:32:01 INFO: x86_64-linux-gnu-gcc -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -fPIC -c /tmp/tmprjpx2d1j/test.c -o /tmp/tmprjpx2d1j/test.o
+2026-03-06 02:32:01 INFO: x86_64-linux-gnu-gcc /tmp/tmprjpx2d1j/test.o -L/usr/local/cuda -L/usr/local/cuda/lib64 -lcufile -o /tmp/tmprjpx2d1j/a.out
+2026-03-06 02:32:02 INFO: x86_64-linux-gnu-gcc -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -fPIC -c /tmp/tmppzdpgh_g/test.c -o /tmp/tmppzdpgh_g/test.o
+2026-03-06 02:32:02 INFO: x86_64-linux-gnu-gcc /tmp/tmppzdpgh_g/test.o -laio -o /tmp/tmppzdpgh_g/a.out
+2026-03-06 02:32:04 WARNING: Using attention mask for resampler
+2026-03-06 02:32:04 WARNING: Using position ids for resampler
+2026-03-06 03:14:46 DEBUG: Attempting to acquire lock 123593857528464 on /root/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-03-06 03:14:46 DEBUG: Lock 123593857528464 acquired on /root/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-03-06 03:14:46 DEBUG: Attempting to release lock 123593857528464 on /root/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-03-06 03:14:46 DEBUG: Lock 123593857528464 released on /root/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-03-06 03:14:46 DEBUG: Attempting to acquire lock 123593857528400 on /root/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+2026-03-06 03:14:46 DEBUG: Lock 123593857528400 acquired on /root/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+2026-03-06 03:14:46 DEBUG: Attempting to release lock 123593857528400 on /root/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+2026-03-06 03:14:46 DEBUG: Lock 123593857528400 released on /root/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock

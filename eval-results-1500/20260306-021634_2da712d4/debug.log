@@ -1,0 +1,666 @@
+2026-03-06 02:16:34 INFO: Logging to: train_outputs/runs/20260305-070550_OhbVrpoi/eval-results-1500/20260306-021634_2da712d4/debug.log
+2026-03-06 02:16:34 DEBUG: CMD: run_eval.py --checkpoint_path train_outputs/runs/20260305-070550_OhbVrpoi/checkpoint-1500/pytorch_model.bin
+2026-03-06 02:16:34 DEBUG: connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=10 socket_options=None
+2026-03-06 02:16:34 DEBUG: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7152131c9810>
+2026-03-06 02:16:34 DEBUG: start_tls.started ssl_context=<ssl.SSLContext object at 0x715213193800> server_hostname='huggingface.co' timeout=10
+2026-03-06 02:16:34 DEBUG: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7152131c9ad0>
+2026-03-06 02:16:34 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: send_request_headers.complete
+2026-03-06 02:16:34 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: send_request_body.complete
+2026-03-06 02:16:34 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:34 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3902-0d5089427db419c416a09c34;20f3b4bc-baa2-4654-85bd-05c5467f46a5'), (b'RateLimit', b'"resolvers";r=2999;t=226'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'QISl8WSxc-cn2kBxYmgAQpMnj87hDanrldqLPw_w0k8TRdUVJZH4TQ==')])
+2026-03-06 02:16:34 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:16:34 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: receive_response_body.complete
+2026-03-06 02:16:34 DEBUG: response_closed.started
+2026-03-06 02:16:34 DEBUG: response_closed.complete
+2026-03-06 02:16:34 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: send_request_headers.complete
+2026-03-06 02:16:34 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: send_request_body.complete
+2026-03-06 02:16:34 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 27 Aug 2025 07:40:22 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'dc12f79d-451a-4671-b976-61c0a9ebfb92'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'Set-Cookie', b'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=None'), (b'Set-Cookie', b'token=; Domain=huggingface.co; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=Lax'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'NH11ns_8f5R_X7IgzUI5zLjdp_CTyYeL6S3pU2_7Eiug5l_lLy2KOA=='), (b'Age', b'16482972')])
+2026-03-06 02:16:34 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:16:34 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: receive_response_body.complete
+2026-03-06 02:16:34 DEBUG: response_closed.started
+2026-03-06 02:16:34 DEBUG: response_closed.complete
+2026-03-06 02:16:34 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: send_request_headers.complete
+2026-03-06 02:16:34 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: send_request_body.complete
+2026-03-06 02:16:34 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'260'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:34 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/tokenizer_config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%22c021cddb0a9dd35b1bf83a9f145be2d9b3757891%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3902-18e1445039fb057e1fd59268;b405cfa4-192f-4b5f-b37d-167aad60eb6c'), (b'RateLimit', b'"resolvers";r=2998;t=226'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'tokenizer_config.json; filename="tokenizer_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"c021cddb0a9dd35b1bf83a9f145be2d9b3757891"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'SqFDDtj51t2hiodCtwmKlT8_ZAfx7Nk_9yoGqUis8dgtln5eF5PG2A==')])
+2026-03-06 02:16:34 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:16:34 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: receive_response_body.complete
+2026-03-06 02:16:34 DEBUG: response_closed.started
+2026-03-06 02:16:34 DEBUG: response_closed.complete
+2026-03-06 02:16:34 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: send_request_headers.complete
+2026-03-06 02:16:34 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: send_request_body.complete
+2026-03-06 02:16:34 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'4200'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 27 Aug 2025 07:40:23 GMT'), (b'ETag', b'"c021cddb0a9dd35b1bf83a9f145be2d9b3757891"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'5b9e2db9-c3ab-4dde-a19a-e10628623405'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'Set-Cookie', b'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=None'), (b'Set-Cookie', b'token=; Domain=huggingface.co; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=Lax'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'tokenizer_config.json; filename="tokenizer_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'ZNqtc5SGGk5tnvoiB3p4fGcDchTNNlmyUBsSeeJhC9P-H2gFWLwjrw=='), (b'Age', b'16482971')])
+2026-03-06 02:16:34 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-03-06 02:16:34 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:34 DEBUG: receive_response_body.complete
+2026-03-06 02:16:34 DEBUG: response_closed.started
+2026-03-06 02:16:34 DEBUG: response_closed.complete
+2026-03-06 02:16:34 DEBUG: send_request_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:34 DEBUG: send_request_headers.complete
+2026-03-06 02:16:34 DEBUG: send_request_body.started request=<Request [b'GET']>
+2026-03-06 02:16:34 DEBUG: send_request_body.complete
+2026-03-06 02:16:34 DEBUG: receive_response_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:34 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'64'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:34 GMT'), (b'ETag', b'W/"40-09f9IAqP13xarAhQxFS2W8rvRkM"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3902-1f3c02ab53e9719a42136973;697d47c7-0c8c-4268-94b2-565b5decec65'), (b'RateLimit', b'"api";r=499;t=226'), (b'RateLimit-Policy', b'"fixed window";"api";q=500;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Error-Code', b'EntryNotFound'), (b'X-Error-Message', b'additional_chat_templates does not exist on "main"'), (b'X-Cache', b'Error from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'TJHH407T8LTMPI9wekhldN79ONOiTOInPQ-fZzPRoO279--z-Zm6yA==')])
+2026-03-06 02:16:34 INFO: HTTP Request: GET https://huggingface.co/api/models/openai/gpt-oss-20b/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-03-06 02:16:34 DEBUG: receive_response_body.started request=<Request [b'GET']>
+2026-03-06 02:16:34 DEBUG: receive_response_body.complete
+2026-03-06 02:16:34 DEBUG: response_closed.started
+2026-03-06 02:16:34 DEBUG: response_closed.complete
+2026-03-06 02:16:34 DEBUG: send_request_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:34 DEBUG: send_request_headers.complete
+2026-03-06 02:16:34 DEBUG: send_request_body.started request=<Request [b'GET']>
+2026-03-06 02:16:34 DEBUG: send_request_body.complete
+2026-03-06 02:16:34 DEBUG: receive_response_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:34 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:34 GMT'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'content-encoding', b'gzip'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3902-4364f2495ca0346577867fe3;343964f1-8b91-4bb9-aa2d-81d625aa29b5'), (b'RateLimit', b'"api";r=498;t=226'), (b'RateLimit-Policy', b'"fixed window";"api";q=500;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'vary', b'accept-encoding'), (b'ETag', b'W/"cf2-VLkT5pJkNACyAgaxfmSOXPRSFl0"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'HVRjqo6WryNEaeGuW8Yu7TmPmZwD5lJfPyU55QgNEFmrKfLlIgEBxg==')])
+2026-03-06 02:16:34 INFO: HTTP Request: GET https://huggingface.co/api/models/openai/gpt-oss-20b/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-03-06 02:16:34 DEBUG: receive_response_body.started request=<Request [b'GET']>
+2026-03-06 02:16:34 DEBUG: receive_response_body.complete
+2026-03-06 02:16:34 DEBUG: response_closed.started
+2026-03-06 02:16:34 DEBUG: response_closed.complete
+2026-03-06 02:16:35 DEBUG: send_request_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:35 DEBUG: send_request_headers.complete
+2026-03-06 02:16:35 DEBUG: send_request_body.started request=<Request [b'GET']>
+2026-03-06 02:16:35 DEBUG: send_request_body.complete
+2026-03-06 02:16:35 DEBUG: receive_response_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:36 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:36 GMT'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'content-encoding', b'gzip'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3903-7986a9120a12103e553821dd;5c091d31-687c-4e80-abce-7e805664f80f'), (b'RateLimit', b'"api";r=497;t=225'), (b'RateLimit-Policy', b'"fixed window";"api";q=500;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'vary', b'accept-encoding'), (b'ETag', b'W/"578c-Vn/GzmJb6kIq6NfZFAYe3YiTRMo"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'VQMjtjdi_9IBSHBHAKi9WSU2OsS6LPjGt-KmjF3fjz7K0Nre659ExQ==')])
+2026-03-06 02:16:36 INFO: HTTP Request: GET https://huggingface.co/api/models/openai/gpt-oss-20b "HTTP/1.1 200 OK"
+2026-03-06 02:16:36 DEBUG: receive_response_body.started request=<Request [b'GET']>
+2026-03-06 02:16:36 DEBUG: receive_response_body.complete
+2026-03-06 02:16:36 DEBUG: response_closed.started
+2026-03-06 02:16:36 DEBUG: response_closed.complete
+2026-03-06 02:16:36 INFO: Using chat template from chat_templates/openai/gpt-oss-20b.jinja
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-15b74e09547da4f5607c0271;096bc9ba-2ba7-4ff3-9ff5-dae6c1e46df4'), (b'RateLimit', b'"resolvers";r=2997;t=220'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'0REwrPzOBOFpTH09SP56x22btaw0CyX-5DRIHeBKBgIDfmik4WYvOQ==')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:25:49 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee1d-22a3c72b4224bc4d75f724bc;61d56a78-cbf2-4d83-af30-4ea275604b67'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'nS6a474gIlxf797vVl12Xrar4s5vmLPWjyNQZPo4biBWmcgAv534rg=='), (b'Age', b'16534251')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 INFO: MXFP4 model detected. Dequantizing to bf16.
+2026-03-06 02:16:40 DEBUG: Model init kwargs: {'pretrained_model_name_or_path': 'openai/gpt-oss-20b', 'device_map': 'cuda', 'torch_dtype': torch.bfloat16, 'trust_remote_code': True, 'attn_implementation': 'eager', 'use_cache': False, 'quantization_config': Mxfp4Config(quant_method=<QuantizationMethod.MXFP4: 'mxfp4'>)}
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-271892ca54fb67ab259a9bfa;3dd927ad-3b0b-4b96-8164-95866d639591'), (b'RateLimit', b'"resolvers";r=2996;t=220'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'rXlPaAr2Z1i7hQJHGSh_m9JUUPcX8QD1GI7Zgx_0kVZKXXnSA55JmA==')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:25:49 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee1d-22a3c72b4224bc4d75f724bc;61d56a78-cbf2-4d83-af30-4ea275604b67'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'mVS6sMPf_vnbjjb7qFTaLm7BNCMacvJnoPippbNkjGXrF1LdaNjIVw=='), (b'Age', b'16534251')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'15'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'ETag', b'W/"f-mY2VvLxuxB7KhsoOdQTlMTccuAQ"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-4fe773b30f7de1e069d6f353;03dc6096-9a6d-4249-8648-7f850d75a390'), (b'RateLimit', b'"resolvers";r=2995;t=220'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'X-Error-Code', b'EntryNotFound'), (b'X-Error-Message', b'Entry not found'), (b'X-Cache', b'Error from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'FUD6iz5lRKg7zZ4fpMlAATC9E09cduadcZATwLhhImruWn8wQfnH9A==')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-7b14aad4478929b461db30ab;dcd326bc-54f0-448d-9edc-d84c39185cc9'), (b'RateLimit', b'"resolvers";r=2994;t=220'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'_ZRlZ9TtYnNZeCTKh9Ijyc7gNrYcIql7MbiQO7xHcK77_nmhsizOUw==')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:25:49 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee1d-22a3c72b4224bc4d75f724bc;61d56a78-cbf2-4d83-af30-4ea275604b67'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'anWkmDSOEWWaDmV-mB0phMnKb5d2DYx0IU8qgevY74id9VpmmexAOg=='), (b'Age', b'16534251')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'15'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'ETag', b'W/"f-mY2VvLxuxB7KhsoOdQTlMTccuAQ"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-4e184dc979dc75fc3c644bab;799a42fe-130e-4282-8ce1-27b72b663b4d'), (b'RateLimit', b'"resolvers";r=2993;t=220'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'X-Error-Code', b'EntryNotFound'), (b'X-Error-Message', b'Entry not found'), (b'X-Cache', b'Error from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'l-dnxJYga-G_UUPp8HO3e7b4gJ-Fvbk-OkOETl-9Q-G4kqX71HIb0A==')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'274'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/model.safetensors.index.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fmodel.safetensors.index.json=&etag=%22ae08521471ab125be4af84d0e51ecfc245830119%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-62beba363ff6e2536c98ad78;f3980838-5b85-4de0-847b-1a37b1985667'), (b'RateLimit', b'"resolvers";r=2992;t=220'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'model.safetensors.index.json; filename="model.safetensors.index.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"ae08521471ab125be4af84d0e51ecfc245830119"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'2PuA5IEG-Bolwk5uYknW6c5WDfrcE92wYAaZ6IdXfReyczmFr1x4VA==')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/model.safetensors.index.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'36355'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 27 Aug 2025 07:40:22 GMT'), (b'ETag', b'"ae08521471ab125be4af84d0e51ecfc245830119"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'65e0fae7-1b72-4a08-a745-efd0abfde5ea'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'Set-Cookie', b'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=None'), (b'Set-Cookie', b'token=; Domain=huggingface.co; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=Lax'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'model.safetensors.index.json; filename="model.safetensors.index.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'f2PUyWcl928HOPzbJ3pKsVGIEvvd_R79oMJ68jOwvoS2JTRMvL77Fw=='), (b'Age', b'16482978')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: Attempting to acquire lock 124597321726928 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/ae08521471ab125be4af84d0e51ecfc245830119.lock
+2026-03-06 02:16:40 DEBUG: Lock 124597321726928 acquired on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/ae08521471ab125be4af84d0e51ecfc245830119.lock
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:26:23 GMT'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'model.safetensors.index.json; filename="model.safetensors.index.json";'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee3f-7ad1f9bb769f7a14679c2d3a;6d6ec50a-f166-4944-979e-706081d90070'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'Set-Cookie', b'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=None'), (b'Set-Cookie', b'token=; Domain=huggingface.co; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=Lax'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Content-Encoding', b'gzip'), (b'ETag', b'W/"ae08521471ab125be4af84d0e51ecfc245830119"'), (b'Vary', b'Origin,accept-encoding'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'KeR-Slvo_LNoqG_pcx5bzq1iVRU7ceaVZC3ai3zYhP0wxMTVE6zupQ=='), (b'Age', b'16534217')])
+2026-03-06 02:16:40 INFO: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: Attempting to release lock 124597321726928 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/ae08521471ab125be4af84d0e51ecfc245830119.lock
+2026-03-06 02:16:40 DEBUG: Lock 124597321726928 released on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/ae08521471ab125be4af84d0e51ecfc245830119.lock
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'content-encoding', b'gzip'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-77abab586a4b50c2285f7c3c;21989db2-beb4-4848-ae07-40bbd9b0ee43'), (b'RateLimit', b'"api";r=496;t=220'), (b'RateLimit-Policy', b'"fixed window";"api";q=500;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'vary', b'accept-encoding'), (b'ETag', b'W/"578c-Vn/GzmJb6kIq6NfZFAYe3YiTRMo"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'tX75un3C9STD5lr7PxWJDxaD8e_T2-U6LxeJI2Na0lT-HzCkR5DxBA==')])
+2026-03-06 02:16:40 INFO: HTTP Request: GET https://huggingface.co/api/models/openai/gpt-oss-20b/revision/main "HTTP/1.1 200 OK"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=10 socket_options=None
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=10 socket_options=None
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 302, b'Found', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1371'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'Location', b'https://cas-bridge.xethub.hf.co/xet-bridge-us/68913539bd3d0a833438591d/01e8ee0bed82226ac31d791bb587136cc8abaeaa308b909f00f738561f6f57a0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260306%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260306T020235Z&X-Amz-Expires=3600&X-Amz-Signature=16c5e9ba60d6c1d6cde5813dc7609fd38c751ecbffb10f4d30393156107bbc8d&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model-00000-of-00002.safetensors%3B+filename%3D%22model-00000-of-00002.safetensors%22%3B&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1772766155&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3Mjc2NjE1NX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82ODkxMzUzOWJkM2QwYTgzMzQzODU5MWQvMDFlOGVlMGJlZDgyMjI2YWMzMWQ3OTFiYjU4NzEzNmNjOGFiYWVhYTMwOGI5MDlmMDBmNzM4NTYxZjZmNTdhMCoifV19&Signature=Grn4P6jN8CI6gyi3WqJLjonz1jvpz4xN-FUgrDER-LUiC8psMBVRSM%7EMil7DpYrxWb7cfGGtiYgJj3Q2pKfRlF5gPoG8oAwDFrIXcrAp99NRZro07EhUHzQCp51qp9yYw2cLfAZVWzDDmnuZNGWAbublO3hHUSWqEL0WYOu2JPlSO8NP83GBRcW5O-Z6TIlmjWkoS4aeCRpWKnWDLt2qtNKLCSGOr8pBH9l21B3k9K3BiMXJ6wfQHUfDrOFhA8Q4mokkUiVfU4M26v-7K04Dj-pdqKPQXszw7ERraZ7IQcBVIDfb3UzPblgWx3jTmzzqrygNmsmij0kjfePtuUtvCQ__&Key-Pair-Id=K2L8F4GPSG1IFC'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-1cd61962118493dd0748ee83;409bcecb-e7c4-48a6-b966-90f8a21f4412'), (b'RateLimit', b'"resolvers";r=2991;t=220'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'X-Linked-Size', b'4792272488'), (b'X-Linked-ETag', b'"16d0f997dcfc4462089d536bffe51b4bcea2f872f5c430be09ef8ed392312427"'), (b'X-Xet-Hash', b'01e8ee0bed82226ac31d791bb587136cc8abaeaa308b909f00f738561f6f57a0'), (b'Link', b'<https://huggingface.co/api/models/openai/gpt-oss-20b/xet-read-token/6cee5e81ee83917806bbde320786a8fb61efebee>; rel="xet-auth", <https://cas-server.xethub.hf.co/v1/reconstructions/01e8ee0bed82226ac31d791bb587136cc8abaeaa308b909f00f738561f6f57a0>; rel="xet-reconstruction-info"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'U4D6e56Rlpuw6Wek6Txe1IIPK3xEj44dT9l1ovBCqxo2vF65PDMejA==')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/6cee5e81ee83917806bbde320786a8fb61efebee/model-00000-of-00002.safetensors "HTTP/1.1 302 Found"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: Attempting to acquire lock 124597322016592 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/16d0f997dcfc4462089d536bffe51b4bcea2f872f5c430be09ef8ed392312427.lock
+2026-03-06 02:16:40 DEBUG: Lock 124597322016592 acquired on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/16d0f997dcfc4462089d536bffe51b4bcea2f872f5c430be09ef8ed392312427.lock
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x715213132010>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: start_tls.started ssl_context=<ssl.SSLContext object at 0x715213193800> server_hostname='huggingface.co' timeout=10
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7152131c0a10>
+2026-03-06 02:16:40 DEBUG: start_tls.started ssl_context=<ssl.SSLContext object at 0x715213193800> server_hostname='huggingface.co' timeout=10
+2026-03-06 02:16:40 DEBUG: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x715213132250>
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7152131c03d0>
+2026-03-06 02:16:40 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_headers.complete
+2026-03-06 02:16:40 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: send_request_body.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'365'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'ETag', b'W/"16d-SIbe9va+69/cnDHT+YMmZfXusi4"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-0e78eabb23b27d7d6f38b6bd;88387c66-ddc3-4d7d-a50a-3e0707d5ea3c'), (b'RateLimit', b'"api";r=495;t=220'), (b'RateLimit-Policy', b'"fixed window";"api";q=500;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Xet-Cas-Url', b'https://cas-server.xethub.hf.co'), (b'X-Xet-Token-Expiration', b'1772764300'), (b'X-Xet-Access-Token', b'eyJhbGciOiJIUzI1NiJ9.eyJyZXBvSWQiOiI2ODkxMzUzOWJkM2QwYTgzMzQzODU5MWQiLCJ1c2VySWQiOiJwdWJsaWMiLCJhY2Nlc3MiOiJSRUFEIiwiaGZDZG5UaWVyIjoidW5hdXRoZW50aWNhdGVkIiwiaWF0IjoxNzcyNzYzNDAwLCJleHAiOjE3NzI3NjQzMDAsImlzcyI6Imh0dHBzOi8vaHVnZ2luZ2ZhY2UuY28ifQ.gmu0VItBhJjnk_1xQE5OjUz_vVKKHZWLzE55KcBdWFE'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 31467e378930bcac2417aea59659f7e6.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'oss5CsYYMbqkt_7O3CSdOhu57J9ik2ZClxsl8FWxRYnLruTea3D_7w==')])
+2026-03-06 02:16:40 INFO: HTTP Request: GET https://huggingface.co/api/models/openai/gpt-oss-20b/xet-read-token/6cee5e81ee83917806bbde320786a8fb61efebee "HTTP/1.1 200 OK"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'GET']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 302, b'Found', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1377'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'Location', b'https://cas-bridge.xethub.hf.co/xet-bridge-us/68913539bd3d0a833438591d/83619e36cf07cf941b551b1a528bab563148591ae4e52b38030bc557d383be7c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260306%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260306T015107Z&X-Amz-Expires=3600&X-Amz-Signature=331e276797a319d269168e46acd113db6347a5a87f9b3de513748f1dcefd7c5a&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model-00002-of-00002.safetensors%3B+filename%3D%22model-00002-of-00002.safetensors%22%3B&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1772765467&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3Mjc2NTQ2N319LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82ODkxMzUzOWJkM2QwYTgzMzQzODU5MWQvODM2MTllMzZjZjA3Y2Y5NDFiNTUxYjFhNTI4YmFiNTYzMTQ4NTkxYWU0ZTUyYjM4MDMwYmM1NTdkMzgzYmU3YyoifV19&Signature=rhYgfYZfgxlOxQIxqwMB-ecRizUbrLKkoEJC2z-qGMvzR5z9nby32b6TnWnQ9vU6623cwJDDjGf7ZsKWWflkt2gUitz1aF%7EjLhTZv72VBVl9psHbpGx5ygmoXZcdLinbaoQGvuN42z7WhH-O7mLkzoNqHf8GDHJlvnYqAGPZjDiALHFqk3h-MutilaHRVn4DKVa0Ev8epJRTxwcUPQUSnYPZzLHaexWqxM4vtLBpdUBi3mcogZZx%7EeCKqVKmP20D7JqiqqrptysBuoqYboQmY0%7E1%7EsIM21AzRcDTMy4XPlkL2BrPk5KW0QMV0i-C7rY76H7enROUklhHG8t9HqRJ2A__&Key-Pair-Id=K2L8F4GPSG1IFC'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-2606b4a2003ce4d33049f609;f538b8ea-f8bd-4208-8f47-14153e72a785'), (b'RateLimit', b'"resolvers";r=2990;t=220'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'X-Linked-Size', b'4170342232'), (b'X-Linked-ETag', b'"a18106b209e9ab35c3406db4f6f12a927364a058b21e9d1373d682e20674b303"'), (b'X-Xet-Hash', b'83619e36cf07cf941b551b1a528bab563148591ae4e52b38030bc557d383be7c'), (b'Link', b'<https://huggingface.co/api/models/openai/gpt-oss-20b/xet-read-token/6cee5e81ee83917806bbde320786a8fb61efebee>; rel="xet-auth", <https://cas-server.xethub.hf.co/v1/reconstructions/83619e36cf07cf941b551b1a528bab563148591ae4e52b38030bc557d383be7c>; rel="xet-reconstruction-info"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 caa5dc507511eeb90523a221b2bd19b4.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'GYdTkw9xCdd-WkR8jffENW7gAKFQA0lTGU51RtaWv2n5SfFuAJuUEg==')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/6cee5e81ee83917806bbde320786a8fb61efebee/model-00002-of-00002.safetensors "HTTP/1.1 302 Found"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 DEBUG: Attempting to acquire lock 124597321985040 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/a18106b209e9ab35c3406db4f6f12a927364a058b21e9d1373d682e20674b303.lock
+2026-03-06 02:16:40 DEBUG: Lock 124597321985040 acquired on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/a18106b209e9ab35c3406db4f6f12a927364a058b21e9d1373d682e20674b303.lock
+2026-03-06 02:16:40 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 302, b'Found', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1387'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:16:40 GMT'), (b'Location', b'https://cas-bridge.xethub.hf.co/xet-bridge-us/68913539bd3d0a833438591d/3f05b8460cc6c36fa6d570fe4b6e74b49a29620f29264c82a02cf4ea5136f10c?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20260306%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260306T020112Z&X-Amz-Expires=3600&X-Amz-Signature=41f381819835a23ee04c39a87056d42f4ee230a9ce40ed803a025bdc8f6cbc9c&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27model-00001-of-00002.safetensors%3B+filename%3D%22model-00001-of-00002.safetensors%22%3B&x-amz-checksum-mode=ENABLED&x-id=GetObject&Expires=1772766072&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc3Mjc2NjA3Mn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82ODkxMzUzOWJkM2QwYTgzMzQzODU5MWQvM2YwNWI4NDYwY2M2YzM2ZmE2ZDU3MGZlNGI2ZTc0YjQ5YTI5NjIwZjI5MjY0YzgyYTAyY2Y0ZWE1MTM2ZjEwYyoifV19&Signature=Yo6jMeX3Z37C2Iq7M6E7kvHltdwyDJf9UOdo5a%7EsqYvunbpbl-q%7EGEpGfE7wFb6KWTfQPLuTVHegQdqBJCeNNY9cwGRY0i5VCGbwUbGlwdzBWk4vsUr6ZUvDfVOjeVq8LL9nfgXzhaK%7EG%7ENOOIY5romNsW3QHqzfcJ1VUlar8AOf4qzR84qG6KLwf4PSVv5EV9tUy7WBp5GodzT0jOKm5-qd--l-KkEdqhhFrqNEUa8%7EENZCfjuGRcddWwEdupWb16N5HfW9-HDSYwWqRF%7EXpXqLQUauP0a%7EiqoDUsg4m%7EMSKPRKcCPwQU7gArtCIM7FzAjn%7EDG5o3EWFsoTqNatRw__&Key-Pair-Id=K2L8F4GPSG1IFC'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3908-3e9977414131656d5021e4a7;3b82cfbf-3157-44c0-97f5-3e9d0b78e1f2'), (b'RateLimit', b'"resolvers";r=2989;t=220'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-HF-Warning', b'unauthenticated; Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.'), (b'X-Hub-Cache', b'MISS'), (b'X-Linked-Size', b'4798702184'), (b'X-Linked-ETag', b'"4fbe328ab445455d6f58dc73852b85873bd626986310abd91cd4d2ce3245eaea"'), (b'X-Xet-Hash', b'3f05b8460cc6c36fa6d570fe4b6e74b49a29620f29264c82a02cf4ea5136f10c'), (b'Link', b'<https://huggingface.co/api/models/openai/gpt-oss-20b/xet-read-token/6cee5e81ee83917806bbde320786a8fb61efebee>; rel="xet-auth", <https://cas-server.xethub.hf.co/v1/reconstructions/3f05b8460cc6c36fa6d570fe4b6e74b49a29620f29264c82a02cf4ea5136f10c>; rel="xet-reconstruction-info"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 f28664317eb9628b30397afa3d6b821c.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'd2nMnym5UB2eK_dXqObJV6f1thG17W7dfQVX5WlVimGBy9w7BB39NQ==')])
+2026-03-06 02:16:40 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/6cee5e81ee83917806bbde320786a8fb61efebee/model-00001-of-00002.safetensors "HTTP/1.1 302 Found"
+2026-03-06 02:16:40 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:16:40 DEBUG: receive_response_body.complete
+2026-03-06 02:16:40 DEBUG: response_closed.started
+2026-03-06 02:16:40 DEBUG: response_closed.complete
+2026-03-06 02:16:40 WARNING: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-03-06 02:16:40 DEBUG: Attempting to acquire lock 124608650400912 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/4fbe328ab445455d6f58dc73852b85873bd626986310abd91cd4d2ce3245eaea.lock
+2026-03-06 02:16:40 DEBUG: Lock 124608650400912 acquired on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/4fbe328ab445455d6f58dc73852b85873bd626986310abd91cd4d2ce3245eaea.lock
+2026-03-06 02:17:22 DEBUG: Attempting to release lock 124597321985040 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/a18106b209e9ab35c3406db4f6f12a927364a058b21e9d1373d682e20674b303.lock
+2026-03-06 02:17:22 DEBUG: Lock 124597321985040 released on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/a18106b209e9ab35c3406db4f6f12a927364a058b21e9d1373d682e20674b303.lock
+2026-03-06 02:17:23 DEBUG: Attempting to release lock 124608650400912 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/4fbe328ab445455d6f58dc73852b85873bd626986310abd91cd4d2ce3245eaea.lock
+2026-03-06 02:17:23 DEBUG: Lock 124608650400912 released on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/4fbe328ab445455d6f58dc73852b85873bd626986310abd91cd4d2ce3245eaea.lock
+2026-03-06 02:17:26 DEBUG: Attempting to release lock 124597322016592 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/16d0f997dcfc4462089d536bffe51b4bcea2f872f5c430be09ef8ed392312427.lock
+2026-03-06 02:17:26 DEBUG: Lock 124597322016592 released on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/16d0f997dcfc4462089d536bffe51b4bcea2f872f5c430be09ef8ed392312427.lock
+2026-03-06 02:17:28 DEBUG: close.started
+2026-03-06 02:17:28 DEBUG: close.complete
+2026-03-06 02:17:28 DEBUG: close.started
+2026-03-06 02:17:28 DEBUG: close.complete
+2026-03-06 02:17:28 DEBUG: close.started
+2026-03-06 02:17:28 DEBUG: close.complete
+2026-03-06 02:17:28 DEBUG: connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=10 socket_options=None
+2026-03-06 02:17:28 DEBUG: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x715212deb350>
+2026-03-06 02:17:28 DEBUG: start_tls.started ssl_context=<ssl.SSLContext object at 0x715213193800> server_hostname='huggingface.co' timeout=10
+2026-03-06 02:17:28 DEBUG: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7152131d1c90>
+2026-03-06 02:17:28 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: send_request_headers.complete
+2026-03-06 02:17:28 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: send_request_body.complete
+2026-03-06 02:17:28 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'262'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:28 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fgeneration_config.json=&etag=%2286f91466555bd40e3de0b1edee3d5d82f4ccdbfe%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3938-75db3986219d8b8a36d032e6;1824d100-bd08-4b6e-b9f3-797edf800b7b'), (b'RateLimit', b'"resolvers";r=2988;t=172'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'generation_config.json; filename="generation_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"86f91466555bd40e3de0b1edee3d5d82f4ccdbfe"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 46ac2c9f87eca5473c2cb27cfe0168a4.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'_IVy8S3a_c_4kN06-JbAfTddkGVGVD9oSbZWa3zkOjHHryo_C9CVLg==')])
+2026-03-06 02:17:28 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:17:28 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: receive_response_body.complete
+2026-03-06 02:17:28 DEBUG: response_closed.started
+2026-03-06 02:17:28 DEBUG: response_closed.complete
+2026-03-06 02:17:28 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: send_request_headers.complete
+2026-03-06 02:17:28 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: send_request_body.complete
+2026-03-06 02:17:28 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'177'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 27 Aug 2025 07:40:22 GMT'), (b'ETag', b'"86f91466555bd40e3de0b1edee3d5d82f4ccdbfe"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'e21fb834-3780-47c1-9a43-0e865d7896d5'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'Set-Cookie', b'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=None'), (b'Set-Cookie', b'token=; Domain=huggingface.co; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=Lax'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'generation_config.json; filename="generation_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 46ac2c9f87eca5473c2cb27cfe0168a4.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'KHdAg8RVJROnH-mEPZRqhBmKUaoHGN14rUIfhZ2UZjUj3_V5ywdP4w=='), (b'Age', b'16483026')])
+2026-03-06 02:17:28 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:28 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: receive_response_body.complete
+2026-03-06 02:17:28 DEBUG: response_closed.started
+2026-03-06 02:17:28 DEBUG: response_closed.complete
+2026-03-06 02:17:28 DEBUG: Attempting to acquire lock 124597317834128 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/86f91466555bd40e3de0b1edee3d5d82f4ccdbfe.lock
+2026-03-06 02:17:28 DEBUG: Lock 124597317834128 acquired on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/86f91466555bd40e3de0b1edee3d5d82f4ccdbfe.lock
+2026-03-06 02:17:28 DEBUG: send_request_headers.started request=<Request [b'GET']>
+2026-03-06 02:17:28 DEBUG: send_request_headers.complete
+2026-03-06 02:17:28 DEBUG: send_request_body.started request=<Request [b'GET']>
+2026-03-06 02:17:28 DEBUG: send_request_body.complete
+2026-03-06 02:17:28 DEBUG: receive_response_headers.started request=<Request [b'GET']>
+2026-03-06 02:17:28 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'177'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:26:28 GMT'), (b'ETag', b'"86f91466555bd40e3de0b1edee3d5d82f4ccdbfe"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee44-077d47743c374b2e10a3ace1;49d50a6b-d903-40c7-b333-7971d9b2ecbe'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'Set-Cookie', b'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=None'), (b'Set-Cookie', b'token=; Domain=huggingface.co; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=Lax'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'generation_config.json; filename="generation_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 46ac2c9f87eca5473c2cb27cfe0168a4.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'hSuq85qtrMUWsfuJkbW75u0zJXAMtY1Lntm4vK9r9gZp5Gk7oLnsIQ=='), (b'Age', b'16534260')])
+2026-03-06 02:17:28 INFO: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:28 DEBUG: receive_response_body.started request=<Request [b'GET']>
+2026-03-06 02:17:28 DEBUG: receive_response_body.complete
+2026-03-06 02:17:28 DEBUG: response_closed.started
+2026-03-06 02:17:28 DEBUG: response_closed.complete
+2026-03-06 02:17:28 DEBUG: Attempting to release lock 124597317834128 on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/86f91466555bd40e3de0b1edee3d5d82f4ccdbfe.lock
+2026-03-06 02:17:28 DEBUG: Lock 124597317834128 released on /root/.cache/huggingface/hub/.locks/models--openai--gpt-oss-20b/86f91466555bd40e3de0b1edee3d5d82f4ccdbfe.lock
+2026-03-06 02:17:28 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: send_request_headers.complete
+2026-03-06 02:17:28 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: send_request_body.complete
+2026-03-06 02:17:28 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'15'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:28 GMT'), (b'ETag', b'W/"f-mY2VvLxuxB7KhsoOdQTlMTccuAQ"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3938-733f35eb53a0ee9e1cd1e9cf;e996e3e8-bb15-439e-b277-deb0f617e020'), (b'RateLimit', b'"resolvers";r=2987;t=172'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'X-Error-Code', b'EntryNotFound'), (b'X-Error-Message', b'Entry not found'), (b'X-Cache', b'Error from cloudfront'), (b'Via', b'1.1 46ac2c9f87eca5473c2cb27cfe0168a4.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'Zd5eYb4xViINYOKPmXK0z57Bb-4l1T-4o_4AvzUgKI5EuzNhVM1I6A==')])
+2026-03-06 02:17:28 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-03-06 02:17:28 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:28 DEBUG: receive_response_body.complete
+2026-03-06 02:17:28 DEBUG: response_closed.started
+2026-03-06 02:17:28 DEBUG: response_closed.complete
+2026-03-06 02:17:28 DEBUG: Loading bitsandbytes native library from: /workspace/Doc-Lora-Finetune/.venv/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cuda128.so
+2026-03-06 02:17:35 DEBUG: HyperLoRA config: HypernetConfig(latent_size=512, use_light_weight_lora=False, light_weight_latent_size=128, per_rank_gen=True, use_per_rank_bias=False, use_bias=True, per_layer_processing=True, use_token_mixing=False, num_pre_head_layers=1, dropout_rate=0.0, lora_config=LoraConfig(task_type='CAUSAL_LM', peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, peft_version='0.18.1', base_model_name_or_path='openai/gpt-oss-20b', revision=None, inference_mode=False, r=8, target_modules={'o_proj', 'q_proj', 'k_proj', 'v_proj'}, exclude_modules=None, lora_alpha=45.254833995939045, lora_dropout=0.0, fan_in_fan_out=False, bias='none', use_rslora=False, modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None, rank_pattern={}, alpha_pattern={}, megatron_config=None, megatron_core='megatron.core', trainable_token_indices=None, loftq_config={}, eva_config=None, corda_config=None, use_dora=False, alora_invocation_tokens=None, use_qalora=False, qalora_group_size=16, layer_replication=None, runtime_config=LoraRuntimeConfig(ephemeral_gpu_offload=False), lora_bias=False, target_parameters=None, arrow_config=None, ensure_weight_tying=False), extra_modules=None, base_hidden_size=2880, layer_indices=tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
+        18, 19, 20, 21, 22, 23], device='cuda:0'), feature_sizes=({'q_proj': 2880, 'k_proj': 2880, 'v_proj': 2880, 'o_proj': 4096, 'down_proj': 2880}, {'q_proj': 4096, 'k_proj': 512, 'v_proj': 512, 'o_proj': 2880, 'down_proj': 2880}), aggregator_config=AggregatorConfig(aggregator_type='perceiver', num_layers=24, num_modules=5, num_extra_modules=0, output_size=512, feature_size=2880, pooling_type='mean', num_latent_factor=8, lora_r=8, per_rank_gen=True, n_latent_queries=8, num_blocks=9, num_self_attn_per_block=0, shared_weights=False, layer_to_layer_ctx_encoder=True), moe_target_modules=['down_proj'], moe_lora_strategy='shared')
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.q_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.k_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.v_proj
+2026-03-06 02:17:37 DEBUG: Applying LoRA forward to self_attn.o_proj
+2026-03-06 02:17:37 DEBUG: ctx_model_name: openai/gpt-oss-20b
+2026-03-06 02:17:37 DEBUG: base_model.config._attn_implementation: eager
+2026-03-06 02:17:37 DEBUG: close.started
+2026-03-06 02:17:37 DEBUG: close.complete
+2026-03-06 02:17:37 DEBUG: connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=10 socket_options=None
+2026-03-06 02:17:37 DEBUG: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7150ab3743d0>
+2026-03-06 02:17:37 DEBUG: start_tls.started ssl_context=<ssl.SSLContext object at 0x715213193800> server_hostname='huggingface.co' timeout=10
+2026-03-06 02:17:37 DEBUG: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7150b40a55d0>
+2026-03-06 02:17:37 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_headers.complete
+2026-03-06 02:17:37 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_body.complete
+2026-03-06 02:17:37 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:37 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3941-16726e923fbbc383103bc12a;a73ddce6-b2bb-4883-8b8e-3f9d31f18d70'), (b'RateLimit', b'"resolvers";r=2986;t=163'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'xTZ-8QOpd66bMX1CVy8BcK6jBmtABMNJ4KkGQ1wH0Qz5YhCX647EuA==')])
+2026-03-06 02:17:37 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:17:37 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_body.complete
+2026-03-06 02:17:37 DEBUG: response_closed.started
+2026-03-06 02:17:37 DEBUG: response_closed.complete
+2026-03-06 02:17:37 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_headers.complete
+2026-03-06 02:17:37 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_body.complete
+2026-03-06 02:17:37 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 27 Aug 2025 07:40:22 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'dc12f79d-451a-4671-b976-61c0a9ebfb92'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'Set-Cookie', b'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=None'), (b'Set-Cookie', b'token=; Domain=huggingface.co; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=Lax'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'TzhI0m4pVh9qkPVc9gVtwar77fxPIpDxTTE-t7wYRYhWRsG6XAE4wg=='), (b'Age', b'16483035')])
+2026-03-06 02:17:37 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:37 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_body.complete
+2026-03-06 02:17:37 DEBUG: response_closed.started
+2026-03-06 02:17:37 DEBUG: response_closed.complete
+2026-03-06 02:17:37 INFO: MXFP4 model detected. Dequantizing to bf16.
+2026-03-06 02:17:37 DEBUG: Model init kwargs: {'pretrained_model_name_or_path': 'openai/gpt-oss-20b', 'device_map': 'cuda', 'torch_dtype': torch.bfloat16, 'trust_remote_code': True, 'attn_implementation': 'eager', 'use_cache': False, 'quantization_config': Mxfp4Config(quant_method=<QuantizationMethod.MXFP4: 'mxfp4'>)}
+2026-03-06 02:17:37 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_headers.complete
+2026-03-06 02:17:37 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_body.complete
+2026-03-06 02:17:37 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:37 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3941-394f8f35128492d82df67efe;7a489f99-3fd9-44de-9f8e-dde5604a5f61'), (b'RateLimit', b'"resolvers";r=2985;t=163'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'N_eyo1K3_dAHranN5LvuWhtVhkrTuOurAA2pvec0dkgcIq53HwLr1g==')])
+2026-03-06 02:17:37 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:17:37 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_body.complete
+2026-03-06 02:17:37 DEBUG: response_closed.started
+2026-03-06 02:17:37 DEBUG: response_closed.complete
+2026-03-06 02:17:37 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_headers.complete
+2026-03-06 02:17:37 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_body.complete
+2026-03-06 02:17:37 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:25:49 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee1d-22a3c72b4224bc4d75f724bc;61d56a78-cbf2-4d83-af30-4ea275604b67'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'OqOybwZ8P3jyWVo8YyuE30gFJP19j5yd-V9AcmxGcpNonIABEEyNEA=='), (b'Age', b'16534308')])
+2026-03-06 02:17:37 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:37 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_body.complete
+2026-03-06 02:17:37 DEBUG: response_closed.started
+2026-03-06 02:17:37 DEBUG: response_closed.complete
+2026-03-06 02:17:37 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_headers.complete
+2026-03-06 02:17:37 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_body.complete
+2026-03-06 02:17:37 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:37 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3941-4b3db6583a2312f96e85601c;e94fdd76-7ce6-415b-9dcf-b524acb204d0'), (b'RateLimit', b'"resolvers";r=2984;t=163'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'zkd8h_tm6CYiYOmzJOakiITOzOGuddt2VCd3rpbFNvJyrhLh5_Z9HA==')])
+2026-03-06 02:17:37 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:17:37 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_body.complete
+2026-03-06 02:17:37 DEBUG: response_closed.started
+2026-03-06 02:17:37 DEBUG: response_closed.complete
+2026-03-06 02:17:37 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_headers.complete
+2026-03-06 02:17:37 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: send_request_body.complete
+2026-03-06 02:17:37 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:25:49 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee1d-22a3c72b4224bc4d75f724bc;61d56a78-cbf2-4d83-af30-4ea275604b67'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'ZVGZHiVfN7fjppkMPEtDD8zxa5YxK_1mORzB45ba-gOMXa9oUVXy7A=='), (b'Age', b'16534308')])
+2026-03-06 02:17:37 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:37 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:37 DEBUG: receive_response_body.complete
+2026-03-06 02:17:37 DEBUG: response_closed.started
+2026-03-06 02:17:37 DEBUG: response_closed.complete
+2026-03-06 02:17:39 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: send_request_headers.complete
+2026-03-06 02:17:39 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: send_request_body.complete
+2026-03-06 02:17:39 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'262'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:39 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fgeneration_config.json=&etag=%2286f91466555bd40e3de0b1edee3d5d82f4ccdbfe%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3943-28016a516053a5b0334af049;fe5654cf-ce71-44f9-907c-572aa650a8db'), (b'RateLimit', b'"resolvers";r=2983;t=161'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-HF-Warning', b'unauthenticated; Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'generation_config.json; filename="generation_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"86f91466555bd40e3de0b1edee3d5d82f4ccdbfe"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'244WdsbPNJMCYFrCaBWrHZk5J8ovio31qPVYnkC3x8OPYeUeDdwl-Q==')])
+2026-03-06 02:17:39 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:17:39 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: receive_response_body.complete
+2026-03-06 02:17:39 DEBUG: response_closed.started
+2026-03-06 02:17:39 DEBUG: response_closed.complete
+2026-03-06 02:17:39 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: send_request_headers.complete
+2026-03-06 02:17:39 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: send_request_body.complete
+2026-03-06 02:17:39 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'177'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 27 Aug 2025 07:40:22 GMT'), (b'ETag', b'"86f91466555bd40e3de0b1edee3d5d82f4ccdbfe"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'e21fb834-3780-47c1-9a43-0e865d7896d5'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'Set-Cookie', b'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=None'), (b'Set-Cookie', b'token=; Domain=huggingface.co; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure; SameSite=Lax'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'generation_config.json; filename="generation_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'Z078lkjWZcskt2nZX1AGjggNUxe8TU5EW1qOMauCuGFNYzHiIB5ZMQ=='), (b'Age', b'16483037')])
+2026-03-06 02:17:39 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:39 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: receive_response_body.complete
+2026-03-06 02:17:39 DEBUG: response_closed.started
+2026-03-06 02:17:39 DEBUG: response_closed.complete
+2026-03-06 02:17:39 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: send_request_headers.complete
+2026-03-06 02:17:39 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: send_request_body.complete
+2026-03-06 02:17:39 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'15'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:39 GMT'), (b'ETag', b'W/"f-mY2VvLxuxB7KhsoOdQTlMTccuAQ"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3943-6f030617079a3170445accf8;8982f6d1-d756-4f31-809b-36a48c13b0c8'), (b'RateLimit', b'"resolvers";r=2982;t=161'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'X-Error-Code', b'EntryNotFound'), (b'X-Error-Message', b'Entry not found'), (b'X-Cache', b'Error from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'm0l-LzCNlfN3JBxsSeSfnludOBCjji0PKdxuAH5su2XkE17h-s50Uw==')])
+2026-03-06 02:17:39 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-03-06 02:17:39 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:39 DEBUG: receive_response_body.complete
+2026-03-06 02:17:39 DEBUG: response_closed.started
+2026-03-06 02:17:39 DEBUG: response_closed.complete
+2026-03-06 02:17:39 DEBUG: peft_weights: {'o_proj': {'lora_dropout': Identity(), 'lora_A': Linear(in_features=4096, out_features=8, bias=False), 'lora_B': Linear(in_features=8, out_features=2880, bias=False)}, 'q_proj': {'lora_dropout': Identity(), 'lora_A': Linear(in_features=2880, out_features=8, bias=False), 'lora_B': Linear(in_features=8, out_features=4096, bias=False)}, 'k_proj': {'lora_dropout': Identity(), 'lora_A': Linear(in_features=2880, out_features=8, bias=False), 'lora_B': Linear(in_features=8, out_features=512, bias=False)}, 'v_proj': {'lora_dropout': Identity(), 'lora_A': Linear(in_features=2880, out_features=8, bias=False), 'lora_B': Linear(in_features=8, out_features=512, bias=False)}}
+2026-03-06 02:17:39 DEBUG: HyperLoRA config: HypernetConfig(latent_size=512, use_light_weight_lora=False, light_weight_latent_size=128, per_rank_gen=True, use_per_rank_bias=False, use_bias=True, per_layer_processing=True, use_token_mixing=False, num_pre_head_layers=1, dropout_rate=0.0, lora_config=LoraConfig(task_type='CAUSAL_LM', peft_type=<PeftType.LORA: 'LORA'>, auto_mapping=None, peft_version='0.18.1', base_model_name_or_path='openai/gpt-oss-20b', revision=None, inference_mode=False, r=8, target_modules={'o_proj', 'q_proj', 'k_proj', 'v_proj'}, exclude_modules=None, lora_alpha=45.254833995939045, lora_dropout=0.0, fan_in_fan_out=False, bias='none', use_rslora=False, modules_to_save=None, init_lora_weights=True, layers_to_transform=None, layers_pattern=None, rank_pattern={}, alpha_pattern={}, megatron_config=None, megatron_core='megatron.core', trainable_token_indices=None, loftq_config={}, eva_config=None, corda_config=None, use_dora=False, alora_invocation_tokens=None, use_qalora=False, qalora_group_size=16, layer_replication=None, runtime_config=LoraRuntimeConfig(ephemeral_gpu_offload=False), lora_bias=False, target_parameters=None, arrow_config=None, ensure_weight_tying=False), extra_modules=None, base_hidden_size=2880, layer_indices=tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
+        18, 19, 20, 21, 22, 23], device='cuda:0'), feature_sizes=({'q_proj': 2880, 'k_proj': 2880, 'v_proj': 2880, 'o_proj': 4096, 'down_proj': 2880}, {'q_proj': 4096, 'k_proj': 512, 'v_proj': 512, 'o_proj': 2880, 'down_proj': 2880}), aggregator_config=AggregatorConfig(aggregator_type='perceiver', num_layers=24, num_modules=5, num_extra_modules=0, output_size=512, feature_size=2880, pooling_type='mean', num_latent_factor=8, lora_r=8, per_rank_gen=True, n_latent_queries=8, num_blocks=9, num_self_attn_per_block=0, shared_weights=False, layer_to_layer_ctx_encoder=True), moe_target_modules=['down_proj'], moe_lora_strategy='shared')
+2026-03-06 02:17:41 DEBUG: ctx_model_name: openai/gpt-oss-20b
+2026-03-06 02:17:41 DEBUG: base_model.config._attn_implementation: eager
+2026-03-06 02:17:41 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_headers.complete
+2026-03-06 02:17:41 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_body.complete
+2026-03-06 02:17:41 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:41 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3945-760da1152d952f67175360a4;c5bee63b-1e39-4251-a71a-7ba1959e745f'), (b'RateLimit', b'"resolvers";r=2981;t=159'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'SsyaQ4Zr6F994xCMab0cBSW-a-QxJRzILaLfB-ir15ztlSTQ-A8zHA==')])
+2026-03-06 02:17:41 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:17:41 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_body.complete
+2026-03-06 02:17:41 DEBUG: response_closed.started
+2026-03-06 02:17:41 DEBUG: response_closed.complete
+2026-03-06 02:17:41 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_headers.complete
+2026-03-06 02:17:41 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_body.complete
+2026-03-06 02:17:41 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:25:49 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee1d-22a3c72b4224bc4d75f724bc;61d56a78-cbf2-4d83-af30-4ea275604b67'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'J4HP8rkl6Dt0KGNKEA05o21_fF14DB0sQKDnCp5iQgGeKKg0m0oeww=='), (b'Age', b'16534312')])
+2026-03-06 02:17:41 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:41 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_body.complete
+2026-03-06 02:17:41 DEBUG: response_closed.started
+2026-03-06 02:17:41 DEBUG: response_closed.complete
+2026-03-06 02:17:41 INFO: MXFP4 model detected. Dequantizing to bf16.
+2026-03-06 02:17:41 DEBUG: Model init kwargs: {'pretrained_model_name_or_path': 'openai/gpt-oss-20b', 'device_map': 'cuda', 'torch_dtype': torch.bfloat16, 'trust_remote_code': True, 'attn_implementation': 'eager', 'use_cache': False, 'quantization_config': Mxfp4Config(quant_method=<QuantizationMethod.MXFP4: 'mxfp4'>)}
+2026-03-06 02:17:41 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_headers.complete
+2026-03-06 02:17:41 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_body.complete
+2026-03-06 02:17:41 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:41 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3945-1ac51c4b20a1b9b84cec1cb3;5592ad1e-6789-4663-86b0-cd9fdd6c7fdf'), (b'RateLimit', b'"resolvers";r=2980;t=159'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'oTloNpfbf2b11DIL7iwIE-c6rVXHq6GeMcJ8nTxa_gJpj1kPvTu3Tw==')])
+2026-03-06 02:17:41 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:17:41 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_body.complete
+2026-03-06 02:17:41 DEBUG: response_closed.started
+2026-03-06 02:17:41 DEBUG: response_closed.complete
+2026-03-06 02:17:41 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_headers.complete
+2026-03-06 02:17:41 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_body.complete
+2026-03-06 02:17:41 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:25:49 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee1d-22a3c72b4224bc4d75f724bc;61d56a78-cbf2-4d83-af30-4ea275604b67'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'kSakMrxUDj-rDPpkemmNgNAhMdkAyxL_nMxeY_q9DuS04bJ_0VTwpA=='), (b'Age', b'16534312')])
+2026-03-06 02:17:41 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:41 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_body.complete
+2026-03-06 02:17:41 DEBUG: response_closed.started
+2026-03-06 02:17:41 DEBUG: response_closed.complete
+2026-03-06 02:17:41 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_headers.complete
+2026-03-06 02:17:41 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_body.complete
+2026-03-06 02:17:41 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'240'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:41 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fconfig.json=&etag=%228fb5a4a03376ab5a12afd94b4ed93da61edf5b1c%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3945-0f3567d20a1059e040e753f0;b2dc6963-2226-44ba-9da3-09c41f7888e6'), (b'RateLimit', b'"resolvers";r=2979;t=159'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'_3qcm6CPoM_lg7sSmR5PKALU3NBm-R7vF5TNa8XoU2pYpy8zkhUB_w==')])
+2026-03-06 02:17:41 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:17:41 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_body.complete
+2026-03-06 02:17:41 DEBUG: response_closed.started
+2026-03-06 02:17:41 DEBUG: response_closed.complete
+2026-03-06 02:17:41 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_headers.complete
+2026-03-06 02:17:41 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: send_request_body.complete
+2026-03-06 02:17:41 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1806'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:25:49 GMT'), (b'ETag', b'"8fb5a4a03376ab5a12afd94b4ed93da61edf5b1c"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee1d-22a3c72b4224bc4d75f724bc;61d56a78-cbf2-4d83-af30-4ea275604b67'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'b6Pa2nwL_SnurNbVG2NKUzIJ0K1SjP-k0ZPKEsk-pDaFQgqZrfnfmw=='), (b'Age', b'16534312')])
+2026-03-06 02:17:41 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:41 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:41 DEBUG: receive_response_body.complete
+2026-03-06 02:17:41 DEBUG: response_closed.started
+2026-03-06 02:17:41 DEBUG: response_closed.complete
+2026-03-06 02:17:43 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: send_request_headers.complete
+2026-03-06 02:17:43 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: send_request_body.complete
+2026-03-06 02:17:43 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'262'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:43 GMT'), (b'Location', b'/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json?%2Fopenai%2Fgpt-oss-20b%2Fresolve%2Fmain%2Fgeneration_config.json=&etag=%2286f91466555bd40e3de0b1edee3d5d82f4ccdbfe%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3947-2e795c6a2e69a5743823c17b;9c797393-e0da-4b1e-9865-e2b1a90617f2'), (b'RateLimit', b'"resolvers";r=2978;t=157'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'generation_config.json; filename="generation_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"86f91466555bd40e3de0b1edee3d5d82f4ccdbfe"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'_fOnVH7aa8m83mSeTQ-9GwAzHtyUHt8Rezv49nl63etPVY2S9AOudw==')])
+2026-03-06 02:17:43 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-03-06 02:17:43 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: receive_response_body.complete
+2026-03-06 02:17:43 DEBUG: response_closed.started
+2026-03-06 02:17:43 DEBUG: response_closed.complete
+2026-03-06 02:17:43 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: send_request_headers.complete
+2026-03-06 02:17:43 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: send_request_body.complete
+2026-03-06 02:17:43 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'177'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 Aug 2025 17:25:50 GMT'), (b'ETag', b'"86f91466555bd40e3de0b1edee3d5d82f4ccdbfe"'), (b'X-Powered-By', b'huggingface-moon'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'X-Request-Id', b'Root=1-68adee1d-6e02f760541f222e1523ddaf;f809611b-4ce1-44c5-889b-cd439ca3ece8'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'generation_config.json; filename="generation_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'XpLvW2rf9CYRqmInvQHD5Qb8nPiVlxtoZfgDOLJtVCKEltYzQ88vEw=='), (b'Age', b'16534313')])
+2026-03-06 02:17:43 INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/openai/gpt-oss-20b/6cee5e81ee83917806bbde320786a8fb61efebee/generation_config.json "HTTP/1.1 200 OK"
+2026-03-06 02:17:43 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: receive_response_body.complete
+2026-03-06 02:17:43 DEBUG: response_closed.started
+2026-03-06 02:17:43 DEBUG: response_closed.complete
+2026-03-06 02:17:43 DEBUG: send_request_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: send_request_headers.complete
+2026-03-06 02:17:43 DEBUG: send_request_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: send_request_body.complete
+2026-03-06 02:17:43 DEBUG: receive_response_headers.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'15'), (b'Connection', b'keep-alive'), (b'Date', b'Fri, 06 Mar 2026 02:17:43 GMT'), (b'ETag', b'W/"f-mY2VvLxuxB7KhsoOdQTlMTccuAQ"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-69aa3947-5937960374aa85d23ef4f67a;6ec65708-f2e3-40db-8b6f-c24dfa84eb48'), (b'RateLimit', b'"resolvers";r=2977;t=157'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=3000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'6cee5e81ee83917806bbde320786a8fb61efebee'), (b'Accept-Ranges', b'bytes'), (b'X-HF-Warning', b'unauthenticated; Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.'), (b'X-Hub-Cache', b'MISS'), (b'X-Error-Code', b'EntryNotFound'), (b'X-Error-Message', b'Entry not found'), (b'X-Cache', b'Error from cloudfront'), (b'Via', b'1.1 9c8267a15d9ba974cf1dfcbe6981ef96.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'IAD55-P8'), (b'X-Amz-Cf-Id', b'DknBWRBENaWcjA_QWZE7udClVu8Gdff-n7bxRM9SZppovgxNdHhhVg==')])
+2026-03-06 02:17:43 INFO: HTTP Request: HEAD https://huggingface.co/openai/gpt-oss-20b/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-03-06 02:17:43 DEBUG: receive_response_body.started request=<Request [b'HEAD']>
+2026-03-06 02:17:43 DEBUG: receive_response_body.complete
+2026-03-06 02:17:43 DEBUG: response_closed.started
+2026-03-06 02:17:43 DEBUG: response_closed.complete
+2026-03-06 02:17:43 INFO: load result: <All keys matched successfully>
+2026-03-06 02:17:43 INFO: Loading dataset squad with split validation...
+2026-03-06 02:17:43 DEBUG: Tokenizing dataset with kwargs: {"ds_name": "squad", "split": "validation", "add_negative_prompt": false, "max_qas_len": -1, "max_qas_per_sample": 1, "base_model_max_len": 131072, "ctx_model_max_len": 131072, "add_ctx_to_chat": false, "max_ctx_chunk_len": -1, "min_ctx_chunk_len": -1, "num_chunk_probs": null, "max_ctx_chunk_num": null, "need_ctx_ids": true, "max_new_tokens": 256, "set_format": "pt"}openai/gpt-oss-20bopenai/gpt-oss-20b
+2026-03-06 02:17:43 DEBUG: Dataset hash: 8499be95cc3a07ed20867b438bbf3927197ce15ece9bb55ebf0c2783d20d6f5a
+2026-03-06 02:17:43 INFO: Loading dataset squad with split validation...
+2026-03-06 02:17:43 DEBUG: close.started
+2026-03-06 02:17:43 DEBUG: close.complete
